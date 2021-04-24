@@ -430,6 +430,7 @@ def load_floorplan_data(data_num):
     src_img_arr = [0] * data_num
     label_img_arr = [0] * data_num
     hdict_arr = [0] * data_num
+    targ_id_dir_arr = [0] * data_num
 
     for i in range(data_num):
         targ_id_dir = os.path.join(
@@ -443,20 +444,22 @@ def load_floorplan_data(data_num):
 
         src_img_arr[i] = cv2.imread(targ_src_fpath, cv2.COLOR_BGR2RGB)
         label_img_arr[i] = cv2.imread(targ_label_fpath, cv2.IMREAD_GRAYSCALE)
+        targ_id_dir_arr[i] = targ_id_dir
 
-    return hdict_arr, src_img_arr, label_img_arr
+    return hdict_arr, src_img_arr, label_img_arr, targ_id_dir_arr
 
 
 def main(data_num):
     """Generate data_num amount of floorplan polygon vectors."""
 
-    hdicts, _, labels = load_floorplan_data(data_num)
+    hdicts, _, labels, targ_id_dirs = load_floorplan_data(data_num)
 
-    for ii, (hdict, _rooms) in enumerate(zip(hdicts, labels)):
+    print('\nWriting {} polygon json files in {}.\n'.format(
+        data_num, DEEPRAD_DATA_DIR))
+
+    for ii, (hdict, _rooms, targ_id_dir) in enumerate(zip(hdicts, labels, targ_id_dirs)):
 
         model_id = hdict['id']
-        print('{}/{}: writing {} ...'.format(
-            ii + 1, data_num, model_id))
 
         # -------------------------------------------------------------
         # Extract/remove image data
@@ -604,17 +607,22 @@ def main(data_num):
         # -------------------------------------------------------------
         # Dump data.
         # -------------------------------------------------------------
+        def write_json(polygon_dict, dest_fpath):
+            """Writes dict to json."""
+            with open(dest_fpath, 'w') as fp:
+                json.dump(polygon_dict, fp, indent=4)
 
-        # # Dump polygons as numpy arrays
-        # floorplan_id = hdata['folder'].split('/')[2]
-        # floorplan_id = 'floorplan_{}'.format(floorplan_id)
-        # deeprad_model_dir = os.path.abspath(os.path.join(os.getcwd(), '../..', 'deeprad/data/models/'))
+        # Dump polygons as numpy arrays
+        polygon_json_fpath = os.path.join(targ_id_dir, 'polygon.json')
+        polygon_dict = {'polygons': [to_poly_np(poly_sh).tolist()
+                                     for poly_sh in _poly_sh_arr]}
+        write_json(polygon_dict, polygon_json_fpath)
 
-        # for i, poly_np in enumerate(poly_np_arr):
-        #     deeprad_fpath = os.path.join(
-        #         deeprad_model_dir, floorplan_id, '{}_{}.npy'.format(floorplan_id, i))
-        #     np.save(deeprad_fpath, poly_np)
-        print('... finished.')  # , dest_id_dir))
+        # -------------------------------------------------------------
+        # Finish
+        # -------------------------------------------------------------
+        print('{}/{}: wrote polygon to {}'.format(
+              ii + 1, data_num, polygon_json_fpath))
 
 
 if __name__ == "__main__":
