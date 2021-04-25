@@ -15,8 +15,6 @@ from rtree import index
 from sklearn.mixture import GaussianMixture
 from matplotlib.axes import Axes
 
-FIGSIZE_DEFAULT = np.array((5, 5))
-
 # Path to all models in deep_rad
 DEEPRAD_DATA_DIR = os.path.abspath(os.path.join(
     os.getcwd(), '..', 'deeprad/data/models/'))
@@ -118,39 +116,6 @@ def rooms_equal_color_mapping(_rooms: np.ndarray, _rooms_class_num: int) -> np.n
     return _rooms
 
 
-def contiguous_ones_idx(bit_arr: np.ndarray) -> np.ndarray:
-    """Find indices of contiguous (repeated) ones in bit array.
-
-    Given binary array (0s, 1s), returns (start, end) indices of
-    repeated blocks of ones:
-
-    bin_arr = np.array([1, 0, 0, 1, 0, 0, 1, 1])
-    contiguous_ones_idx(bin_arr) -> [[0, 1] [3, 4] [6, 8]]
-    """
-    bit_arr = (bit_arr / bit_arr.max()).astype(np.bool)
-    bit_arr = np.concatenate(([0], bit_arr, [0]))
-    diff = np.abs(np.diff(bit_arr))
-    zero_idx = np.where(diff == 1)[0].reshape(-1, 2)
-    return zero_idx
-
-
-def whitespace_pixel_dist(pixel_arr, viz=False, **kwargs):
-    """Return distance whitespace as array from 1d pixel array."""
-    pixel_arr = pixel_arr.astype(int)
-    zz = np.ones((int(np.round(pixel_arr.max())) + 1)).astype(np.bool)
-    zz[pixel_arr] = 0
-    white_space_idx = contiguous_ones_idx(zz)
-    white_space_idx.T
-
-    if viz:
-        _, a = plt.subplots()
-        a.imshow(np.array([zz] * 10), **kwargs)
-
-    # distance of white space. Less then 16 = close
-    pix_gap = white_space_idx[:, 1] - white_space_idx[:, 0]
-    return pix_gap
-
-
 def contour_to_poly_np(pt):
     """opencv to polygon array."""
     pt = pt.T[:, 0]
@@ -183,8 +148,6 @@ def clean_poly_sh(poly_sh, buffer_epsilon, simplify_tol, convex_diff_pct=0.1):
     Simplfiies w/ tolerance, buffers, and checks ccw orientation.
     """
 
-    if simplify_tol:
-        poly_sh = poly_sh.simplify(simplify_tol, preserve_topology=True)
     # Buffer in/out to remove some geometric flaws
     poly_sh = poly_sh.buffer(buffer_epsilon).buffer(-buffer_epsilon)
 
@@ -196,6 +159,12 @@ def clean_poly_sh(poly_sh, buffer_epsilon, simplify_tol, convex_diff_pct=0.1):
     diff_ptc = diff_poly_sh.area / poly_sh.area
     if 0.0 < diff_ptc < convex_diff_pct:
         poly_sh = poly_sh.convex_hull
+
+    if simplify_tol:
+        poly_sh = poly_sh.simplify(simplify_tol, preserve_topology=False)
+
+    if np.abs(poly_sh.area) < 1e-10:
+        return None
 
     if not poly_sh.exterior.is_ccw:
         poly_sh = geom.polygon.orient(poly_sh, sign=1.0)
@@ -346,6 +315,39 @@ def gauss_mixture_1d(pts_1d: np.ndarray, n_components: float = 10,
     return gauss_model.fit(pts_1d)
 
 
+def contiguous_ones_idx(bit_arr: np.ndarray) -> np.ndarray:
+    """Find indices of contiguous (repeated) ones in bit array.
+
+    Given binary array (0s, 1s), returns (start, end) indices of
+    repeated blocks of ones:
+
+    bin_arr = np.array([1, 0, 0, 1, 0, 0, 1, 1])
+    contiguous_ones_idx(bin_arr) -> [[0, 1] [3, 4] [6, 8]]
+    """
+    bit_arr = (bit_arr / bit_arr.max()).astype(np.bool)
+    bit_arr = np.concatenate(([0], bit_arr, [0]))
+    diff = np.abs(np.diff(bit_arr))
+    zero_idx = np.where(diff == 1)[0].reshape(-1, 2)
+    return zero_idx
+
+
+def whitespace_pixel_dist(pixel_arr, viz=False, **kwargs):
+    """Return distance whitespace as array from 1d pixel array."""
+    pixel_arr = pixel_arr.astype(int)
+    zz = np.ones((int(np.round(pixel_arr.max())) + 1)).astype(np.bool)
+    zz[pixel_arr] = 0
+    white_space_idx = contiguous_ones_idx(zz)
+    white_space_idx.T
+
+    if viz:
+        _, a = plt.subplots()
+        a.imshow(np.array([zz] * 3), **kwargs)
+
+    # distance of white space. Less then 16 = close
+    pix_gap = white_space_idx[:, 1] - white_space_idx[:, 0]
+    return pix_gap
+
+
 def estimate_1d_cluster_num(xproj: np.ndarray, yproj: np.ndarray, gap_tol: float,
                             viz: bool = False) -> np.ndarray:
     """Estimate x andy components from x and y projection and gap filtering.
@@ -403,30 +405,50 @@ def move_poly_sh_arr(poly_sh_arr, xdim=None, ydim=None):
 
 def get_cluster_coord_fx(x_gauss_mod, y_gauss_mod):
     """Get fx coordinates of closest cluster for polygon pts from gaussian mixture model."""
-    x_means = x_gauss_mod.means_[:, 0]
-    y_means = y_gauss_mod.means_[:, 0]
+    x_means = x_gauss_mod.means_[:, 0].round(2)
+    y_means = y_gauss_mod.means_[:, 0].round(2)
 
     def _get_cluster_coord_fx(polyc):
         polyc_xproj = np.array([polyc[:, 0], np.zeros_like(polyc[:, 0])]).T
         polyc_yproj = np.array([polyc[:, 1], np.zeros_like(polyc[:, 1])]).T
         x_clusters = x_gauss_mod.predict(polyc_xproj)
         y_clusters = y_gauss_mod.predict(polyc_yproj)
-        return np.array([x_means[x_clusters], y_means[y_clusters]])
+
+        predicted_pts = np.array([x_means[x_clusters], y_means[y_clusters]])
+        return predicted_pts
+
     return _get_cluster_coord_fx
 
 
-def load_floorplan_data(data_num):
-    """Load floorplan data."""
+def extract_floorplan_ids(data_num):
+    """Safely extract root model directories for polygon extraction."""
 
     # Load all model directories
     floorplan_id_arr = os.listdir(DEEPRAD_DATA_DIR)
     n_ids = len(floorplan_id_arr)
+
+    if n_ids == 0:
+        raise Exception('No image files. Add images and try again.')
 
     if data_num > n_ids:
         print('Note: data_num {} is too high. Resetting to n_ids {}.'.format(
             data_num, n_ids))
         data_num = n_ids
 
+    return data_num, floorplan_id_arr
+
+
+def load_json(json_fpath):
+    with open(json_fpath, 'r') as fp:
+        val_dict = json.load(fp)
+
+    return val_dict
+
+
+def load_floorplan_data(targ_id_dirs):
+    """Load floorplan data."""
+
+    data_num = len(targ_id_dirs)
     src_img_arr = [0] * data_num
     label_img_arr = [0] * data_num
     hdict_arr = [0] * data_num
@@ -434,13 +456,12 @@ def load_floorplan_data(data_num):
 
     for i in range(data_num):
         targ_id_dir = os.path.join(
-            DEEPRAD_DATA_DIR, floorplan_id_arr[i], 'data')
+            DEEPRAD_DATA_DIR, targ_id_dirs[i], 'data')
         targ_src_fpath = os.path.join(targ_id_dir, 'src.jpg')
         targ_label_fpath = os.path.join(targ_id_dir, 'label.jpg')
         targ_json_fpath = os.path.join(targ_id_dir, 'door_vecs.json')
 
-        with open(targ_json_fpath, 'r') as fp:
-            hdict_arr[i] = json.load(fp)
+        hdict_arr[i] = load_json(targ_json_fpath)
 
         src_img_arr[i] = cv2.imread(targ_src_fpath, cv2.COLOR_BGR2RGB)
         label_img_arr[i] = cv2.imread(targ_label_fpath, cv2.IMREAD_GRAYSCALE)
@@ -452,10 +473,11 @@ def load_floorplan_data(data_num):
 def main(data_num):
     """Generate data_num amount of floorplan polygon vectors."""
 
-    hdicts, _, labels, targ_id_dirs = load_floorplan_data(data_num)
+    data_num, targ_ids = extract_floorplan_ids(data_num)
+    hdicts, _, labels, targ_id_dirs = load_floorplan_data(targ_ids)
 
     print('\nWriting {} polygon json files in {}.\n'.format(
-        data_num, DEEPRAD_DATA_DIR))
+          data_num, DEEPRAD_DATA_DIR))
 
     for ii, (hdict, _rooms, targ_id_dir) in enumerate(zip(hdicts, labels, targ_id_dirs)):
 
@@ -517,29 +539,39 @@ def main(data_num):
         def _clean_poly_sh(p): return clean_poly_sh(p, beps, stol, dpct)
         _poly_sh_arr = [_clean_poly_sh(_poly_sh)
                         for _poly_sh in _poly_sh_arr]
+        _poly_sh_arr = [p for p in _poly_sh_arr if p is not None]
+
+        # -------------------------------------------------------------
+        # Scale and shift
+        # -------------------------------------------------------------
+        # TODO: do this at the beginning after doors.
+        poly_sh_arr = [copy(p) for p in _poly_sh_arr]
+        unscaled_poly_sh_arr = [copy(p) for p in _poly_sh_arr]
+        poly_sh_arr = move_poly_sh_arr(poly_sh_arr)
+        poly_sh_arr = [affinity.scale(
+            p, meter_scale, meter_scale, origin=(0, 0)) for p in poly_sh_arr]
 
         # -------------------------------------------------------------
         # Filter polygon checks.
         # -------------------------------------------------------------
 
-        poly_sh_arr = [copy(p) for p in _poly_sh_arr]
         n_poly_sh = len(poly_sh_arr)
         ridx = poly_sh_rtree(poly_sh_arr)
         # print('num @', n_poly_sh)
 
         # TODO: set scale tol
-        gap_tol = 1.0 * image_scale
+        gap_tol = 1.0
         poly_sh_arr = filter_duplicate_polys(ridx, poly_sh_arr, gap_tol)
         # _dup_diff = n_poly_sh - len(poly_sh_arr)
         # print('Removed:', _dup_diff, 'duplicates; num @', len(poly_sh_arr))
 
         area_tol, side_tol = 2, 1
         poly_sh_arr = filter_by_size(
-            poly_sh_arr, area_tol, side_tol, meter_scale)
+            poly_sh_arr, area_tol, side_tol, 1)
         # _sml_diff = n_poly_sh - _dup_diff - len(poly_sh_arr)
         # print('Removed:', _sml_diff, 'smalls; num @', len(poly_sh_arr))
 
-        poly_sh_arr = filter_parent_polys(poly_sh_arr, image_scale)
+        poly_sh_arr = filter_parent_polys(poly_sh_arr, 1)
         # _par_diff = n_poly_sh - _sml_diff - len(poly_sh_arr)
         # print('Removed:', _par_diff, 'parents; num @', len(poly_sh_arr))
         # print('num: ', len(poly_sh_arr))
@@ -548,12 +580,13 @@ def main(data_num):
         # Compute projections.
         # -------------------------------------------------------------
 
+        xproj_, yproj_ = xy_projection(unscaled_poly_sh_arr)
         xproj, yproj = xy_projection(poly_sh_arr)
 
         # Calculate cluster number for x/y axis
         gap_tol = 0.5 * image_scale
         x_ncomps, y_ncomps = estimate_1d_cluster_num(
-            xproj, yproj, gap_tol, False)
+            xproj_, yproj_, gap_tol, False)
         # print('x comp: {}, y comp: {}'.format(x_ncomps, y_ncomps))
 
         _poly_sh_arr = poly_sh_arr
@@ -581,28 +614,18 @@ def main(data_num):
         # Predict cluster and snap to orthogrid
         # -------------------------------------------------------------
         _cluster_fx = get_cluster_coord_fx(x_gauss_mod, y_gauss_mod)
-        beps, stol, dpct = 5, 0.25 * image_scale, 0.005
-        def _clean_poly_sh(p): return clean_poly_sh(p, beps, stol, dpct)
+        buff_eps, simple_tol, diff_pct = 1, 0.5, 0.05
 
         poly_sh_arr_ = []
         for poly_sh in poly_sh_arr:
             poly_np = _cluster_fx(to_poly_np(poly_sh).T)
             polyc_sh = to_poly_sh(poly_np)
-            polyc_sh = _clean_poly_sh(polyc_sh)
+            polyc_sh = clean_poly_sh(polyc_sh, buff_eps, simple_tol, diff_pct)
             if polyc_sh is None or polyc_sh.area < 1e-10 or polyc_sh.exterior is None:
                 continue
             poly_sh_arr_.append(polyc_sh)
 
         poly_sh_arr = poly_sh_arr_
-
-        # -------------------------------------------------------------
-        # Scale and shift
-        # -------------------------------------------------------------
-        # TODO: do this at the beginning after doors.
-        _poly_sh_arr = poly_sh_arr
-        _poly_sh_arr = move_poly_sh_arr(_poly_sh_arr)
-        _poly_sh_arr = [affinity.scale(
-            p, meter_scale, meter_scale, origin=(0, 0)) for p in _poly_sh_arr]
 
         # -------------------------------------------------------------
         # Dump data.
@@ -615,14 +638,14 @@ def main(data_num):
         # Dump polygons as numpy arrays
         polygon_json_fpath = os.path.join(targ_id_dir, 'polygon.json')
         polygon_dict = {'polygons': [to_poly_np(poly_sh).tolist()
-                                     for poly_sh in _poly_sh_arr]}
+                                     for poly_sh in poly_sh_arr]}
         write_json(polygon_dict, polygon_json_fpath)
 
         # -------------------------------------------------------------
         # Finish
         # -------------------------------------------------------------
-        print('{}/{}: wrote polygon to {}'.format(
-              ii + 1, data_num, polygon_json_fpath))
+        print('{}/{}: wrote {} polygon to {}'.format(
+              ii + 1, data_num, targ_ids[ii], polygon_json_fpath))
 
 
 if __name__ == "__main__":

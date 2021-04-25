@@ -1,0 +1,1348 @@
+
+ Meters for 21,ROOM_0BB94468 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_0BB94468 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_0BB94468 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 94,ROOM_23047892 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_23047892 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_23047892 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 119,ROOM_2EF2EAA1 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 144,ROOM_493C46C0 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_493C46C0 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_493C46C0 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 169,ROOM_76BDFCB4 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 194,ROOM_AC598DDF GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_AC598DDF [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_AC598DDF [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 219,ROOM_ACD4CC4D GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 244,ROOM_D69CF705 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_D69CF705 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_D69CF705 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 269,ROOM_D7174B0E GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_D7174B0E [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_D7174B0E [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 294,ROOM_DA745308 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_DA745308 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_DA745308 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 319,ROOM_ECB15B3E GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_ECB15B3E [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_ECB15B3E [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 344,ROOM_EDB489C9 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_EDB489C9 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_EDB489C9 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 369,ROOM_F1A4C2D0 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 394,ROOM_FE68BF79 GENERIC OFFICE LIGHTING:Lights Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_FE68BF79 [J]
+  OnMeter=InteriorLights:Electricity [J]
+  OnMeter=InteriorLights:Electricity:Zone:ROOM_FE68BF79 [J]
+  OnMeter=General:InteriorLights:Electricity [J]
+
+ Meters for 419,ROOM_0BB94468 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_0BB94468 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_0BB94468 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 456,ROOM_23047892 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_23047892 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_23047892 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 469,ROOM_2EF2EAA1 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 482,ROOM_493C46C0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_493C46C0 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_493C46C0 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 495,ROOM_76BDFCB4 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 508,ROOM_AC598DDF GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_AC598DDF [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_AC598DDF [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 521,ROOM_ACD4CC4D GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 534,ROOM_D69CF705 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_D69CF705 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_D69CF705 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 547,ROOM_D7174B0E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_D7174B0E [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_D7174B0E [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 560,ROOM_DA745308 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_DA745308 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_DA745308 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 573,ROOM_ECB15B3E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_ECB15B3E [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_ECB15B3E [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 586,ROOM_EDB489C9 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_EDB489C9 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_EDB489C9 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 599,ROOM_F1A4C2D0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 612,ROOM_FE68BF79 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy [J]
+  OnMeter=Electricity:Facility [J]
+  OnMeter=Electricity:Building [J]
+  OnMeter=Electricity:Zone:ROOM_FE68BF79 [J]
+  OnMeter=InteriorEquipment:Electricity [J]
+  OnMeter=InteriorEquipment:Electricity:Zone:ROOM_FE68BF79 [J]
+  OnMeter=General:InteriorEquipment:Electricity [J]
+
+ Meters for 877,ROOM_0BB94468:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_0BB94468 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_0BB94468 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 950,ROOM_0BB94468:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_0BB94468 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_0BB94468 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 987,ROOM_23047892:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_23047892 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_23047892 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1012,ROOM_23047892:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_23047892 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_23047892 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1025,ROOM_2EF2EAA1:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1050,ROOM_2EF2EAA1:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_2EF2EAA1 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1063,ROOM_493C46C0:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_493C46C0 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_493C46C0 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1088,ROOM_493C46C0:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_493C46C0 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_493C46C0 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1101,ROOM_76BDFCB4:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1126,ROOM_76BDFCB4:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_76BDFCB4 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1139,ROOM_AC598DDF:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_AC598DDF [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_AC598DDF [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1164,ROOM_AC598DDF:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_AC598DDF [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_AC598DDF [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1177,ROOM_ACD4CC4D:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1202,ROOM_ACD4CC4D:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_ACD4CC4D [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1215,ROOM_D69CF705:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_D69CF705 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_D69CF705 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1240,ROOM_D69CF705:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_D69CF705 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_D69CF705 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1253,ROOM_D7174B0E:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_D7174B0E [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_D7174B0E [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1278,ROOM_D7174B0E:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_D7174B0E [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_D7174B0E [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1291,ROOM_DA745308:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_DA745308 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_DA745308 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1316,ROOM_DA745308:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_DA745308 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_DA745308 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1329,ROOM_ECB15B3E:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_ECB15B3E [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_ECB15B3E [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1354,ROOM_ECB15B3E:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_ECB15B3E [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_ECB15B3E [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1367,ROOM_EDB489C9:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_EDB489C9 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_EDB489C9 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1392,ROOM_EDB489C9:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_EDB489C9 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_EDB489C9 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1405,ROOM_F1A4C2D0:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1430,ROOM_F1A4C2D0:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_F1A4C2D0 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1443,ROOM_FE68BF79:Zone Air System Sensible Heating Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_FE68BF79 [J]
+  OnMeter=Heating:EnergyTransfer [J]
+  OnMeter=Heating:EnergyTransfer:Zone:ROOM_FE68BF79 [J]
+  OnMeter=General:Heating:EnergyTransfer [J]
+
+ Meters for 1468,ROOM_FE68BF79:Zone Air System Sensible Cooling Energy [J]
+  OnMeter=EnergyTransfer:Facility [J]
+  OnMeter=EnergyTransfer:Building [J]
+  OnMeter=EnergyTransfer:Zone:ROOM_FE68BF79 [J]
+  OnMeter=Cooling:EnergyTransfer [J]
+  OnMeter=Cooling:EnergyTransfer:Zone:ROOM_FE68BF79 [J]
+  OnMeter=General:Cooling:EnergyTransfer [J]
+
+ Meters for 1481,Whole Building:Facility Total Purchased Electric Energy [J]
+  OnMeter=ElectricityPurchased:Facility [J]
+  OnMeter=ElectricityPurchased:Plant [J]
+  OnMeter=Cogeneration:ElectricityPurchased [J]
+  OnMeter=General:Cogeneration:ElectricityPurchased [J]
+
+ Meters for 1530,Whole Building:Facility Total Surplus Electric Energy [J]
+  OnMeter=ElectricitySurplusSold:Facility [J]
+  OnMeter=ElectricitySurplusSold:Plant [J]
+  OnMeter=Cogeneration:ElectricitySurplusSold [J]
+  OnMeter=General:Cogeneration:ElectricitySurplusSold [J]
+
+ Meters for 1579,Whole Building:Facility Net Purchased Electric Energy [J]
+  OnMeter=ElectricityNet:Facility [J]
+  OnMeter=ElectricityNet:Plant [J]
+  OnMeter=Cogeneration:ElectricityNet [J]
+  OnMeter=General:Cogeneration:ElectricityNet [J]
+
+ Meters for 1628,ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1677,ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1728,ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1729,ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1732,ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1733,ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1736,ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1737,ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1740,ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1741,ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1744,ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1745,ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1748,ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1749,ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1752,ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1753,ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1756,ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1757,ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1760,ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1761,ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1764,ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1765,ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1768,ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1769,ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1772,ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1773,ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1776,ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy [J]
+  OnMeter=DistrictHeating:Facility [J]
+  OnMeter=DistrictHeating:HVAC [J]
+  OnMeter=Heating:DistrictHeating [J]
+  OnMeter=General:Heating:DistrictHeating [J]
+
+ Meters for 1777,ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy [J]
+  OnMeter=DistrictCooling:Facility [J]
+  OnMeter=DistrictCooling:HVAC [J]
+  OnMeter=Cooling:DistrictCooling [J]
+  OnMeter=General:Cooling:DistrictCooling [J]
+
+ Meters for 1780,Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass [kg]
+  OnMeter=Carbon Equivalent:Facility [kg]
+  OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
+
+ Meters for 1805,Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass [kg]
+  OnMeter=Carbon Equivalent:Facility [kg]
+  OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
+
+ Meters for 1806,Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass [kg]
+  OnMeter=Carbon Equivalent:Facility [kg]
+  OnMeter=CarbonEquivalentEmissions:Carbon Equivalent [kg]
+
+ For Meter=Electricity:Facility [J], ResourceType=Electricity, contents are:
+  ROOM_0BB94468 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_23047892 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_DA745308 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_0BB94468 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_23047892 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_DA745308 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=Electricity:Building [J], ResourceType=Electricity, Group=Building, contents are:
+  ROOM_0BB94468 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_23047892 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_DA745308 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_0BB94468 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_23047892 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_DA745308 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_0BB94468 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_0BB94468 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_0BB94468 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity [J], ResourceType=Electricity, EndUse=InteriorLights, contents are:
+  ROOM_0BB94468 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_23047892 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_DA745308 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_0BB94468 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_0BB94468 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=General:InteriorLights:Electricity [J], ResourceType=Electricity, EndUse=InteriorLights, contents are:
+  ROOM_0BB94468 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_23047892 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_DA745308 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_23047892 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_23047892 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_23047892 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_23047892 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_23047892 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_2EF2EAA1 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_2EF2EAA1 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_2EF2EAA1 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_2EF2EAA1 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_493C46C0 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_493C46C0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_493C46C0 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_493C46C0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_76BDFCB4 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_76BDFCB4 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_76BDFCB4 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_76BDFCB4 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_AC598DDF [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_AC598DDF GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_AC598DDF [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_AC598DDF GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_ACD4CC4D [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_ACD4CC4D GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_ACD4CC4D [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_ACD4CC4D GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_D69CF705 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_D69CF705 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_D69CF705 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_D69CF705 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_D7174B0E [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_D7174B0E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_D7174B0E [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_D7174B0E GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_DA745308 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_DA745308 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_DA745308 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_DA745308 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_DA745308 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_ECB15B3E [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_ECB15B3E GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_ECB15B3E [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_ECB15B3E GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_EDB489C9 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_EDB489C9 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_EDB489C9 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_EDB489C9 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_F1A4C2D0 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_F1A4C2D0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_F1A4C2D0 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_F1A4C2D0 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=Electricity:Zone:ROOM_FE68BF79 [J], ResourceType=Electricity, Group=Zone, contents are:
+  ROOM_FE68BF79 GENERIC OFFICE LIGHTING:Lights Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorLights:Electricity:Zone:ROOM_FE68BF79 [J], ResourceType=Electricity, EndUse=InteriorLights, Group=Zone, contents are:
+  ROOM_FE68BF79 GENERIC OFFICE LIGHTING:Lights Electric Energy
+
+ For Meter=InteriorEquipment:Electricity [J], ResourceType=Electricity, EndUse=InteriorEquipment, contents are:
+  ROOM_0BB94468 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_23047892 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_DA745308 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_0BB94468 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_0BB94468 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=General:InteriorEquipment:Electricity [J], ResourceType=Electricity, EndUse=InteriorEquipment, contents are:
+  ROOM_0BB94468 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_23047892 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_2EF2EAA1 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_493C46C0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_76BDFCB4 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_AC598DDF GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ACD4CC4D GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D69CF705 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_D7174B0E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_DA745308 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_ECB15B3E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_EDB489C9 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_F1A4C2D0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+  ROOM_FE68BF79 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_23047892 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_23047892 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_2EF2EAA1 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_2EF2EAA1 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_493C46C0 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_493C46C0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_76BDFCB4 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_76BDFCB4 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_AC598DDF [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_AC598DDF GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_ACD4CC4D [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_ACD4CC4D GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_D69CF705 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_D69CF705 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_D7174B0E [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_D7174B0E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_DA745308 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_DA745308 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_ECB15B3E [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_ECB15B3E GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_EDB489C9 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_EDB489C9 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_F1A4C2D0 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_F1A4C2D0 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=InteriorEquipment:Electricity:Zone:ROOM_FE68BF79 [J], ResourceType=Electricity, EndUse=InteriorEquipment, Group=Zone, contents are:
+  ROOM_FE68BF79 GENERIC OFFICE EQUIPMENT:Electric Equipment Electric Energy
+
+ For Meter=EnergyTransfer:Facility [J], ResourceType=EnergyTransfer, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Heating Energy
+  ROOM_0BB94468:Zone Air System Sensible Cooling Energy
+  ROOM_23047892:Zone Air System Sensible Heating Energy
+  ROOM_23047892:Zone Air System Sensible Cooling Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Heating Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Cooling Energy
+  ROOM_493C46C0:Zone Air System Sensible Heating Energy
+  ROOM_493C46C0:Zone Air System Sensible Cooling Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Heating Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Cooling Energy
+  ROOM_AC598DDF:Zone Air System Sensible Heating Energy
+  ROOM_AC598DDF:Zone Air System Sensible Cooling Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Heating Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Cooling Energy
+  ROOM_D69CF705:Zone Air System Sensible Heating Energy
+  ROOM_D69CF705:Zone Air System Sensible Cooling Energy
+  ROOM_D7174B0E:Zone Air System Sensible Heating Energy
+  ROOM_D7174B0E:Zone Air System Sensible Cooling Energy
+  ROOM_DA745308:Zone Air System Sensible Heating Energy
+  ROOM_DA745308:Zone Air System Sensible Cooling Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Heating Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Cooling Energy
+  ROOM_EDB489C9:Zone Air System Sensible Heating Energy
+  ROOM_EDB489C9:Zone Air System Sensible Cooling Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Heating Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Cooling Energy
+  ROOM_FE68BF79:Zone Air System Sensible Heating Energy
+  ROOM_FE68BF79:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Building [J], ResourceType=EnergyTransfer, Group=Building, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Heating Energy
+  ROOM_0BB94468:Zone Air System Sensible Cooling Energy
+  ROOM_23047892:Zone Air System Sensible Heating Energy
+  ROOM_23047892:Zone Air System Sensible Cooling Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Heating Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Cooling Energy
+  ROOM_493C46C0:Zone Air System Sensible Heating Energy
+  ROOM_493C46C0:Zone Air System Sensible Cooling Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Heating Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Cooling Energy
+  ROOM_AC598DDF:Zone Air System Sensible Heating Energy
+  ROOM_AC598DDF:Zone Air System Sensible Cooling Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Heating Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Cooling Energy
+  ROOM_D69CF705:Zone Air System Sensible Heating Energy
+  ROOM_D69CF705:Zone Air System Sensible Cooling Energy
+  ROOM_D7174B0E:Zone Air System Sensible Heating Energy
+  ROOM_D7174B0E:Zone Air System Sensible Cooling Energy
+  ROOM_DA745308:Zone Air System Sensible Heating Energy
+  ROOM_DA745308:Zone Air System Sensible Cooling Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Heating Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Cooling Energy
+  ROOM_EDB489C9:Zone Air System Sensible Heating Energy
+  ROOM_EDB489C9:Zone Air System Sensible Cooling Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Heating Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Cooling Energy
+  ROOM_FE68BF79:Zone Air System Sensible Heating Energy
+  ROOM_FE68BF79:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_0BB94468 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Heating Energy
+  ROOM_0BB94468:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Heating, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Heating Energy
+  ROOM_23047892:Zone Air System Sensible Heating Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Heating Energy
+  ROOM_493C46C0:Zone Air System Sensible Heating Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Heating Energy
+  ROOM_AC598DDF:Zone Air System Sensible Heating Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Heating Energy
+  ROOM_D69CF705:Zone Air System Sensible Heating Energy
+  ROOM_D7174B0E:Zone Air System Sensible Heating Energy
+  ROOM_DA745308:Zone Air System Sensible Heating Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Heating Energy
+  ROOM_EDB489C9:Zone Air System Sensible Heating Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Heating Energy
+  ROOM_FE68BF79:Zone Air System Sensible Heating Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_0BB94468 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Heating Energy
+
+ For Meter=General:Heating:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Heating, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Heating Energy
+  ROOM_23047892:Zone Air System Sensible Heating Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Heating Energy
+  ROOM_493C46C0:Zone Air System Sensible Heating Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Heating Energy
+  ROOM_AC598DDF:Zone Air System Sensible Heating Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Heating Energy
+  ROOM_D69CF705:Zone Air System Sensible Heating Energy
+  ROOM_D7174B0E:Zone Air System Sensible Heating Energy
+  ROOM_DA745308:Zone Air System Sensible Heating Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Heating Energy
+  ROOM_EDB489C9:Zone Air System Sensible Heating Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Heating Energy
+  ROOM_FE68BF79:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Cooling, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Cooling Energy
+  ROOM_23047892:Zone Air System Sensible Cooling Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Cooling Energy
+  ROOM_493C46C0:Zone Air System Sensible Cooling Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Cooling Energy
+  ROOM_AC598DDF:Zone Air System Sensible Cooling Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Cooling Energy
+  ROOM_D69CF705:Zone Air System Sensible Cooling Energy
+  ROOM_D7174B0E:Zone Air System Sensible Cooling Energy
+  ROOM_DA745308:Zone Air System Sensible Cooling Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Cooling Energy
+  ROOM_EDB489C9:Zone Air System Sensible Cooling Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Cooling Energy
+  ROOM_FE68BF79:Zone Air System Sensible Cooling Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_0BB94468 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Cooling Energy
+
+ For Meter=General:Cooling:EnergyTransfer [J], ResourceType=EnergyTransfer, EndUse=Cooling, contents are:
+  ROOM_0BB94468:Zone Air System Sensible Cooling Energy
+  ROOM_23047892:Zone Air System Sensible Cooling Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Cooling Energy
+  ROOM_493C46C0:Zone Air System Sensible Cooling Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Cooling Energy
+  ROOM_AC598DDF:Zone Air System Sensible Cooling Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Cooling Energy
+  ROOM_D69CF705:Zone Air System Sensible Cooling Energy
+  ROOM_D7174B0E:Zone Air System Sensible Cooling Energy
+  ROOM_DA745308:Zone Air System Sensible Cooling Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Cooling Energy
+  ROOM_EDB489C9:Zone Air System Sensible Cooling Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Cooling Energy
+  ROOM_FE68BF79:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_23047892 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_23047892:Zone Air System Sensible Heating Energy
+  ROOM_23047892:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_23047892 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_23047892:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_23047892 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_23047892:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_2EF2EAA1 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_2EF2EAA1:Zone Air System Sensible Heating Energy
+  ROOM_2EF2EAA1:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_2EF2EAA1 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_2EF2EAA1:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_2EF2EAA1 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_2EF2EAA1:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_493C46C0 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_493C46C0:Zone Air System Sensible Heating Energy
+  ROOM_493C46C0:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_493C46C0 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_493C46C0:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_493C46C0 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_493C46C0:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_76BDFCB4 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_76BDFCB4:Zone Air System Sensible Heating Energy
+  ROOM_76BDFCB4:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_76BDFCB4 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_76BDFCB4:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_76BDFCB4 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_76BDFCB4:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_AC598DDF [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_AC598DDF:Zone Air System Sensible Heating Energy
+  ROOM_AC598DDF:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_AC598DDF [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_AC598DDF:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_AC598DDF [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_AC598DDF:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_ACD4CC4D [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_ACD4CC4D:Zone Air System Sensible Heating Energy
+  ROOM_ACD4CC4D:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_ACD4CC4D [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_ACD4CC4D:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_ACD4CC4D [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_ACD4CC4D:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_D69CF705 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_D69CF705:Zone Air System Sensible Heating Energy
+  ROOM_D69CF705:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_D69CF705 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_D69CF705:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_D69CF705 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_D69CF705:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_D7174B0E [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_D7174B0E:Zone Air System Sensible Heating Energy
+  ROOM_D7174B0E:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_D7174B0E [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_D7174B0E:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_D7174B0E [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_D7174B0E:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_DA745308 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_DA745308:Zone Air System Sensible Heating Energy
+  ROOM_DA745308:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_DA745308 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_DA745308:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_DA745308 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_DA745308:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_ECB15B3E [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_ECB15B3E:Zone Air System Sensible Heating Energy
+  ROOM_ECB15B3E:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_ECB15B3E [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_ECB15B3E:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_ECB15B3E [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_ECB15B3E:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_EDB489C9 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_EDB489C9:Zone Air System Sensible Heating Energy
+  ROOM_EDB489C9:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_EDB489C9 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_EDB489C9:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_EDB489C9 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_EDB489C9:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_F1A4C2D0 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_F1A4C2D0:Zone Air System Sensible Heating Energy
+  ROOM_F1A4C2D0:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_F1A4C2D0 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_F1A4C2D0:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_F1A4C2D0 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_F1A4C2D0:Zone Air System Sensible Cooling Energy
+
+ For Meter=EnergyTransfer:Zone:ROOM_FE68BF79 [J], ResourceType=EnergyTransfer, Group=Zone, contents are:
+  ROOM_FE68BF79:Zone Air System Sensible Heating Energy
+  ROOM_FE68BF79:Zone Air System Sensible Cooling Energy
+
+ For Meter=Heating:EnergyTransfer:Zone:ROOM_FE68BF79 [J], ResourceType=EnergyTransfer, EndUse=Heating, Group=Zone, contents are:
+  ROOM_FE68BF79:Zone Air System Sensible Heating Energy
+
+ For Meter=Cooling:EnergyTransfer:Zone:ROOM_FE68BF79 [J], ResourceType=EnergyTransfer, EndUse=Cooling, Group=Zone, contents are:
+  ROOM_FE68BF79:Zone Air System Sensible Cooling Energy
+
+ For Meter=ElectricityPurchased:Facility [J], ResourceType=ElectricityPurchased, contents are:
+  Whole Building:Facility Total Purchased Electric Energy
+
+ For Meter=ElectricityPurchased:Plant [J], ResourceType=ElectricityPurchased, Group=Plant, contents are:
+  Whole Building:Facility Total Purchased Electric Energy
+
+ For Meter=Cogeneration:ElectricityPurchased [J], ResourceType=ElectricityPurchased, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Purchased Electric Energy
+
+ For Meter=General:Cogeneration:ElectricityPurchased [J], ResourceType=ElectricityPurchased, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Purchased Electric Energy
+
+ For Meter=ElectricitySurplusSold:Facility [J], ResourceType=ElectricitySurplusSold, contents are:
+  Whole Building:Facility Total Surplus Electric Energy
+
+ For Meter=ElectricitySurplusSold:Plant [J], ResourceType=ElectricitySurplusSold, Group=Plant, contents are:
+  Whole Building:Facility Total Surplus Electric Energy
+
+ For Meter=Cogeneration:ElectricitySurplusSold [J], ResourceType=ElectricitySurplusSold, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Surplus Electric Energy
+
+ For Meter=General:Cogeneration:ElectricitySurplusSold [J], ResourceType=ElectricitySurplusSold, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Total Surplus Electric Energy
+
+ For Meter=ElectricityNet:Facility [J], ResourceType=ElectricityNet, contents are:
+  Whole Building:Facility Net Purchased Electric Energy
+
+ For Meter=ElectricityNet:Plant [J], ResourceType=ElectricityNet, Group=Plant, contents are:
+  Whole Building:Facility Net Purchased Electric Energy
+
+ For Meter=Cogeneration:ElectricityNet [J], ResourceType=ElectricityNet, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Net Purchased Electric Energy
+
+ For Meter=General:Cogeneration:ElectricityNet [J], ResourceType=ElectricityNet, EndUse=Cogeneration, contents are:
+  Whole Building:Facility Net Purchased Electric Energy
+
+ For Meter=DistrictHeating:Facility [J], ResourceType=DistrictHeating, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=DistrictHeating:HVAC [J], ResourceType=DistrictHeating, Group=HVAC, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=Heating:DistrictHeating [J], ResourceType=DistrictHeating, EndUse=Heating, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=General:Heating:DistrictHeating [J], ResourceType=DistrictHeating, EndUse=Heating, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Heating Energy
+
+ For Meter=DistrictCooling:Facility [J], ResourceType=DistrictCooling, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=DistrictCooling:HVAC [J], ResourceType=DistrictCooling, Group=HVAC, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=Cooling:DistrictCooling [J], ResourceType=DistrictCooling, EndUse=Cooling, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=General:Cooling:DistrictCooling [J], ResourceType=DistrictCooling, EndUse=Cooling, contents are:
+  ROOM_0BB94468 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_23047892 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_2EF2EAA1 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_493C46C0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_76BDFCB4 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_AC598DDF IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ACD4CC4D IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D69CF705 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_D7174B0E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_DA745308 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_ECB15B3E IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_EDB489C9 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_F1A4C2D0 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+  ROOM_FE68BF79 IDEAL LOADS AIR SYSTEM:Zone Ideal Loads Supply Air Total Cooling Energy
+
+ For Meter=Carbon Equivalent:Facility [kg], ResourceType=Carbon Equivalent, contents are:
+  Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass
+
+ For Meter=CarbonEquivalentEmissions:Carbon Equivalent [kg], ResourceType=Carbon Equivalent, EndUse=CarbonEquivalentEmissions, contents are:
+  Site:Environmental Impact Total N2O Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CH4 Emissions Carbon Equivalent Mass
+  Site:Environmental Impact Total CO2 Emissions Carbon Equivalent Mass
