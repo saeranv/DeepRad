@@ -4,6 +4,7 @@ import sys
 import os
 import json
 from copy import copy
+from pathlib import Path
 
 # scientific python stuff
 import cv2
@@ -488,6 +489,10 @@ def load_floorplan_data(targ_id_dirs, data_num):
     return hdict_arr, src_img_arr, label_img_arr, targ_id_dir_arr
 
 
+def make_dir_safely(dest_dir):
+    Path(dest_dir).mkdir(parents=True, exist_ok=True)
+
+
 def main(data_num):
     """Generate data_num amount of floorplan polygon vectors."""
 
@@ -658,6 +663,20 @@ def main(data_num):
         polygon_dict = {'polygons': [to_poly_np(poly_sh).tolist()
                                      for poly_sh in poly_sh_arr]}
         write_json(polygon_dict, polygon_json_fpath)
+
+        # -------------------------------------------------------------
+        # Make image folders for train_test
+        # -------------------------------------------------------------
+        train_test_id_dir = os.path.join(
+            DEEPRAD_DATA_DIR, '..', 'train_test', model_id)
+        train_test_id_dir = os.path.abspath(train_test_id_dir)
+        make_dir_safely(train_test_id_dir)
+
+        # Make i/o dirs
+        out_dir = os.path.join(train_test_id_dir, 'out_label')
+        in_dir = os.path.join(train_test_id_dir, 'in_data')
+        make_dir_safely(out_dir)
+        make_dir_safely(in_dir)
 
         # -------------------------------------------------------------
         # Finish
