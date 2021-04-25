@@ -131,6 +131,7 @@ dmypy.json
 # Honeybee/Ladybug data
 /run
 /models
+/ghout
 *.sql
 
 
