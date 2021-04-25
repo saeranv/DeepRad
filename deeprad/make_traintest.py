@@ -1,4 +1,4 @@
-"""Preprocess raw outputs from GH for train/test dataset."""
+"""Preprocess raw outputs from GHOUT_DIR for train/test dataset."""
 import os
 import numpy as np
 
@@ -11,12 +11,10 @@ DEEPRAD_GHOUT_DIR = utils.DEEPRAD_GHOUT_DIR
 DEEPRAD_TRAINTEST_DIR = utils.DEEPRAD_TRAINTEST_DIR
 
 
-def load_img_gray(img_fpath):
-    return cv2.imread(img_fpath, cv2.)
+def preprocess_img(img_fpath: str) -> np.ndarray:
+    """Preprocess image for traintest."""
 
-
-def preprocess_img(img_fpath):
-    pass
+    print(img_fpath)
 
 
 def main():
@@ -42,7 +40,6 @@ def main():
     # add as channels
 
     # save new images
-    # delete all raw images
 
     pass
 

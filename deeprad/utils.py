@@ -37,6 +37,14 @@ def to_poly_np(poly_sh):
     return np.array(poly_sh.exterior.xy)
 
 
+def load_img_gray(img_fpath: str) -> np.ndarray:
+    return cv2.imread(img_fpath, cv2.IMREAD_GRAYSCALE)
+
+
+def load_img_rgb(img_fpath: str) -> np.ndarray:
+    return cv2.imread(img_fpath, cv2.COLOR_BGR2RGB)
+
+
 def extract_floorplan_ids(data_num, target_data_dir=None, verbose=True):
     """Safely extract root model directories for polygon extraction."""
 
@@ -97,8 +105,8 @@ def load_floorplan_data(targ_id_dirs, data_num):
 
         idx += 1
         hdict_arr[idx] = hdict
-        src_img_arr[idx] = cv2.imread(targ_src_fpath, cv2.COLOR_BGR2RGB)
-        label_img_arr[idx] = cv2.imread(targ_label_fpath, cv2.IMREAD_GRAYSCALE)
+        src_img_arr[idx] = koad_img_rgb(targ_src_fpath)
+        label_img_arr[idx] = load_img_gray(targ_label_fpath)
         targ_id_dir_arr[idx] = targ_id_dir
         null_lst.append(targ_id_dirs[i] + '\n')
 
