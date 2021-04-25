@@ -1,0 +1,95 @@
+{
+   "completed_at" : "20210425T011629Z",
+   "completed_status" : "Success",
+   "current_step" : 2,
+   "file_paths" : 
+   [
+      "C:/Users/Administrator/master/git/deeprad/data/models/floorplan_1235/data_sim/Building_31_dbc228b8/OpenStudio/generated_files",
+      "./files",
+      "./weather",
+      "../../files",
+      "../../weather",
+      "./"
+   ],
+   "hash" : "0A1077A4",
+   "measure_paths" : 
+   [
+      "C:\\Users\\Administrator\\ladybug_tools\\resources\\measures\\honeybee_openstudio_gem\\lib\\measures"
+   ],
+   "started_at" : "20210425T011625Z",
+   "steps" : 
+   [
+      {
+         "arguments" : 
+         {
+            "model_json" : "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1235\\data_sim\\Building_31_dbc228b8\\OpenStudio\\Building_31_dbc228b8.hbjson"
+         },
+         "measure_dir_name" : "from_honeybee_model",
+         "result" : 
+         {
+            "completed_at" : "20210425T011629Z",
+            "measure_class_name" : "FromHoneybeeModel",
+            "measure_display_name" : "From Honeybee Model",
+            "measure_name" : "from_honeybee_model",
+            "measure_taxonomy" : "Whole Building.Space Types",
+            "measure_type" : "ModelMeasure",
+            "measure_uid" : "a5f500d5-97ff-4048-a6f4-6b0b0a92d0f0",
+            "measure_version_id" : "ad76277e-d175-4f0d-a667-936d3aa65420",
+            "measure_version_modified" : "20190315T212648Z",
+            "measure_xml_checksum" : "D8922A73",
+            "started_at" : "20210425T011629Z",
+            "stderr" : "",
+            "stdout" : "",
+            "step_errors" : [],
+            "step_files" : [],
+            "step_info" : [],
+            "step_result" : "Success",
+            "step_values" : 
+            [
+               {
+                  "name" : "model_json",
+                  "value" : "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1235\\data_sim\\Building_31_dbc228b8\\OpenStudio\\Building_31_dbc228b8.hbjson"
+               }
+            ],
+            "step_warnings" : []
+         }
+      },
+      {
+         "arguments" : 
+         {
+            "simulation_parameter_json" : "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1235\\data_sim\\Building_31_dbc228b8\\OpenStudio\\simulation_parameter.json"
+         },
+         "measure_dir_name" : "from_honeybee_simulation_parameter",
+         "result" : 
+         {
+            "completed_at" : "20210425T011629Z",
+            "measure_class_name" : "FromHoneybeeSimulationParameter",
+            "measure_display_name" : "From Honeybee Simulation Parameter",
+            "measure_name" : "from_honeybee_simulation_parameter",
+            "measure_taxonomy" : "Whole Building.Space Types",
+            "measure_type" : "ModelMeasure",
+            "measure_uid" : "a5f500d5-97ff-4048-a6f4-6b0b0a92d0f0",
+            "measure_version_id" : "1e4bf088-594a-49b3-89c7-91acc7b10262",
+            "measure_version_modified" : "20191221T003153Z",
+            "measure_xml_checksum" : "D8922A73",
+            "started_at" : "20210425T011629Z",
+            "stderr" : "",
+            "stdout" : "",
+            "step_errors" : [],
+            "step_files" : [],
+            "step_info" : [],
+            "step_result" : "Success",
+            "step_values" : 
+            [
+               {
+                  "name" : "simulation_parameter_json",
+                  "value" : "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1235\\data_sim\\Building_31_dbc228b8\\OpenStudio\\simulation_parameter.json"
+               }
+            ],
+            "step_warnings" : []
+         }
+      }
+   ],
+   "updated_at" : "20210425T011629Z",
+   "weather_file" : "C:\\Users\\Administrator\\ladybug_tools\\resources\\weather\\USA_MA_Boston-Logan.Intl.AP.725090_TMY3\\USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw"
+}

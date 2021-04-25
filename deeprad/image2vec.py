@@ -84,13 +84,11 @@ def to_poly_np(poly_sh):
     return np.array(poly_sh.exterior.xy)
 
 
-def rooms_equal_color_mapping(_rooms: np.ndarray, _rooms_class_num: int) -> np.ndarray:
+def rooms_equal_color_mapping(_rooms: np.ndarray) -> np.ndarray:
     """Replace class indices with equally spaced intervals from 0-255 for thresholding.
 
         Args:
             _rooms: 2d matrix of room image pixels in np.uint8.
-            _rooms_class_num: Number of classes, equivalent to
-                `np.unique(_rooms)'.
 
         Returns:
             _rooms: 2d matrix of room image pixels with indices
@@ -102,7 +100,8 @@ def rooms_equal_color_mapping(_rooms: np.ndarray, _rooms_class_num: int) -> np.n
         raise Exception('_rooms expects 2D matrix of dtype np.uint.'
                         'Got: {} shape and {} dtype.'.format(_rooms.shape, _rooms.dtype))
 
-    N = _rooms_class_num
+    room_classes = np.unique(_rooms)
+    N = room_classes.size
 
     # Color val calculation
     color_interval = 255 / (N - 1)
@@ -445,28 +444,47 @@ def load_json(json_fpath):
     return val_dict
 
 
-def load_floorplan_data(targ_id_dirs):
+def load_floorplan_data(targ_id_dirs, data_num):
     """Load floorplan data."""
 
-    data_num = len(targ_id_dirs)
     src_img_arr = [0] * data_num
     label_img_arr = [0] * data_num
     hdict_arr = [0] * data_num
     targ_id_dir_arr = [0] * data_num
 
-    for i in range(data_num):
+    i = -1
+    idx = -1
+    total_i = 0
+    null_lst = []
+
+    while (idx + 1) < data_num:
+        i += 1
         targ_id_dir = os.path.join(
             DEEPRAD_DATA_DIR, targ_id_dirs[i], 'data')
         targ_src_fpath = os.path.join(targ_id_dir, 'src.jpg')
         targ_label_fpath = os.path.join(targ_id_dir, 'label.jpg')
         targ_json_fpath = os.path.join(targ_id_dir, 'door_vecs.json')
 
-        hdict_arr[i] = load_json(targ_json_fpath)
+        hdict = load_json(targ_json_fpath)
 
-        src_img_arr[i] = cv2.imread(targ_src_fpath, cv2.COLOR_BGR2RGB)
-        label_img_arr[i] = cv2.imread(targ_label_fpath, cv2.IMREAD_GRAYSCALE)
-        targ_id_dir_arr[i] = targ_id_dir
+        if hdict['scale'] < 0.4:
+            print('Skip {} b/c scale at {}. Total skipped={}.'.format(
+                  targ_id_dirs[i], hdict['scale'], total_i))
+            total_i += 1
+            continue
 
+        idx += 1
+        hdict_arr[idx] = hdict
+        src_img_arr[idx] = cv2.imread(targ_src_fpath, cv2.COLOR_BGR2RGB)
+        label_img_arr[idx] = cv2.imread(targ_label_fpath, cv2.IMREAD_GRAYSCALE)
+        targ_id_dir_arr[idx] = targ_id_dir
+        null_lst.append(targ_id_dirs[i] + '\n')
+
+    # Write to null list
+    null_fpath = os.path.join(DEEPRAD_DATA_DIR, '_null.txt')
+    with open(null_fpath, 'w') as fp:
+        #[fp.writeline(null_) for null_ in null_lst]
+        fp.writelines(null_lst)
     return hdict_arr, src_img_arr, label_img_arr, targ_id_dir_arr
 
 
@@ -474,7 +492,7 @@ def main(data_num):
     """Generate data_num amount of floorplan polygon vectors."""
 
     data_num, targ_ids = extract_floorplan_ids(data_num)
-    hdicts, _, labels, targ_id_dirs = load_floorplan_data(targ_ids)
+    hdicts, _, labels, targ_id_dirs = load_floorplan_data(targ_ids, data_num)
 
     print('\nWriting {} polygon json files in {}.\n'.format(
           data_num, DEEPRAD_DATA_DIR))

@@ -1,0 +1,20 @@
+{
+    "weather_file": "C:\\Users\\Administrator\\ladybug_tools\\resources\\weather\\USA_MA_Boston-Logan.Intl.AP.725090_TMY3\\USA_MA_Boston-Logan.Intl.AP.725090_TMY3.epw", 
+    "measure_paths": [
+        "C:\\Users\\Administrator\\ladybug_tools\\resources\\measures\\honeybee_openstudio_gem\\lib\\measures"
+    ], 
+    "steps": [
+        {
+            "arguments": {
+                "model_json": "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1293\\data_sim\\Building_34_ce7ca84c\\OpenStudio\\Building_34_ce7ca84c.hbjson"
+            }, 
+            "measure_dir_name": "from_honeybee_model"
+        }, 
+        {
+            "arguments": {
+                "simulation_parameter_json": "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1293\\data_sim\\Building_34_ce7ca84c\\OpenStudio\\simulation_parameter.json"
+            }, 
+            "measure_dir_name": "from_honeybee_simulation_parameter"
+        }
+    ]
+}

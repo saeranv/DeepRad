@@ -1,0 +1,10 @@
+{
+  "FromHoneybeeModel": {
+    "model_json": "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1191\\data_sim\\Building_30_be906e89\\OpenStudio\\Building_30_be906e89.hbjson",
+    "applicable": true
+  },
+  "FromHoneybeeSimulationParameter": {
+    "simulation_parameter_json": "C:\\Users\\Administrator\\master\\git\\deeprad\\data\\models\\floorplan_1191\\data_sim\\Building_30_be906e89\\OpenStudio\\simulation_parameter.json",
+    "applicable": true
+  }
+}
