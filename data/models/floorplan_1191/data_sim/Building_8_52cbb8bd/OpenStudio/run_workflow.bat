@@ -1,2 +1,0 @@
-C:
-"C:\openstudio-3.0.1\bin\openstudio.exe" -I "C:\Users\Administrator\ladybug_tools\resources\measures\honeybee_openstudio_gem\lib" run -m -w "C:\Users\Administrator\master\git\deeprad\data\models\floorplan_1191\data_sim\Building_8_52cbb8bd\OpenStudio\workflow.osw"

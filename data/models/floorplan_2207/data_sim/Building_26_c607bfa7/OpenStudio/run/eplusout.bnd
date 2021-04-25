@@ -1,0 +1,296 @@
+Program Version,EnergyPlus, Version 9.3.0-baff08990c, YMD=2021.04.24 20:47
+! This file shows details about the branches, nodes, and other
+! elements of the flow connections.
+! This file is intended for use in "debugging" potential problems
+! that may also be detected by the program, but may be more easily
+! identified by "eye".
+! This file is also intended to support software which draws a
+! schematic diagram of the HVAC system.
+! ===============================================================
+! #Nodes,<Number of Unique Nodes>
+ #Nodes,45
+! <Node>,<NodeNumber>,<Node Name>,<Node Fluid Type>,<# Times Node Referenced After Definition>
+ Node,1,NODE 13,Air,2
+ Node,2,NODE 12,Air,2
+ Node,3,NODE 29,Air,2
+ Node,4,NODE 28,Air,2
+ Node,5,NODE 21,Air,2
+ Node,6,NODE 20,Air,2
+ Node,7,NODE 19,Air,2
+ Node,8,NODE 18,Air,2
+ Node,9,NODE 25,Air,2
+ Node,10,NODE 24,Air,2
+ Node,11,NODE 31,Air,2
+ Node,12,NODE 30,Air,2
+ Node,13,NODE 17,Air,2
+ Node,14,NODE 16,Air,2
+ Node,15,NODE 27,Air,2
+ Node,16,NODE 26,Air,2
+ Node,17,NODE 23,Air,2
+ Node,18,NODE 22,Air,2
+ Node,19,NODE 15,Air,2
+ Node,20,NODE 14,Air,2
+ Node,21,NODE 33,Air,2
+ Node,22,NODE 32,Air,2
+ Node,23,NODE 1,Air,0
+ Node,24,NODE 9,Air,0
+ Node,25,NODE 5,Air,0
+ Node,26,NODE 4,Air,0
+ Node,27,NODE 7,Air,0
+ Node,28,NODE 10,Air,0
+ Node,29,NODE 3,Air,0
+ Node,30,NODE 8,Air,0
+ Node,31,NODE 6,Air,0
+ Node,32,NODE 2,Air,0
+ Node,33,NODE 11,Air,0
+ Node,34,MODEL OUTDOOR AIR NODE,Air,0
+ Node,35,ROOM_07C9946F IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,36,ROOM_2993877B IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,37,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,38,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,39,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,40,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,41,ROOM_72393597 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,42,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,43,ROOM_902207CD IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,44,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+ Node,45,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,Air,1
+! ===============================================================
+! Suspicious nodes have 0 references.  It is normal for some nodes, however.
+! Listing nodes with 0 references (culled from previous list):
+! <Suspicious Node>,<NodeNumber>,<Node Name>,<Node Fluid Type>,<# Times Node Referenced After Definition>
+ Suspicious Node,23,NODE 1,Air,0
+ Suspicious Node,24,NODE 9,Air,0
+ Suspicious Node,25,NODE 5,Air,0
+ Suspicious Node,26,NODE 4,Air,0
+ Suspicious Node,27,NODE 7,Air,0
+ Suspicious Node,28,NODE 10,Air,0
+ Suspicious Node,29,NODE 3,Air,0
+ Suspicious Node,30,NODE 8,Air,0
+ Suspicious Node,31,NODE 6,Air,0
+ Suspicious Node,32,NODE 2,Air,0
+ Suspicious Node,33,NODE 11,Air,0
+ Suspicious Node,34,MODEL OUTDOOR AIR NODE,Air,0
+! ===============================================================
+! <#Branch Lists>,<Number of Branch Lists>
+ #Branch Lists,0
+! <Branch List>,<Branch List Count>,<Branch List Name>,<Loop Name>,<Loop Type>,<Number of Branches>
+! <Branch>,<Branch Count>,<Branch Name>,<Loop Name>,<Loop Type>,<Branch Inlet Node Name>,<Branch Outlet Node Name>
+! ===============================================================
+! <#Supply Air Paths>,<Number of Supply Air Paths>
+ #Supply Air Paths,0
+! <Supply Air Path>,<Supply Air Path Count>,<Supply Air Path Name>,<AirLoopHVAC Name>
+! <#Components on Supply Air Path>,<Number of Components>
+! <Supply Air Path Component>,<Component Count>,<Component Type>,<Component Name>,<AirLoopHVAC Name>
+! <#Outlet Nodes on Supply Air Path Component>,<Number of Nodes>
+! <Supply Air Path Component Nodes>,<Node Count>,<Component Type>,<Component Name>,<Inlet Node Name>,<Outlet Node Name>,<AirLoopHVAC Name>
+! ===============================================================
+! <#Return Air Paths>,<Number of Return Air Paths>
+ #Return Air Paths,0
+! <Return Air Path>,<Return Air Path Count>,<Return Air Path Name>,<AirLoopHVAC Name>
+! <#Components on Return Air Path>,<Number of Components>
+! <Return Air Path Component>,<Component Count>,<Component Type>,<Component Name>,<AirLoopHVAC Name>
+! <#Inlet Nodes on Return Air Path Component>,<Number of Nodes>
+! <Return Air Path Component Nodes>,<Node Count>,<Component Type>,<Component Name>,<Inlet Node Name>,<Outlet Node Name>,<AirLoopHVAC Name>
+! ===============================================================
+! #Outdoor Air Nodes,<Number of Outdoor Air Nodes>
+ #Outdoor Air Nodes,12
+! <Outdoor Air Node>,<NodeNumber>,<Node Name>
+ Outdoor Air Node,34,MODEL OUTDOOR AIR NODE
+ Outdoor Air Node,35,ROOM_07C9946F IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,36,ROOM_2993877B IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,37,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,38,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,39,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,40,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,41,ROOM_72393597 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,42,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,43,ROOM_902207CD IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,44,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+ Outdoor Air Node,45,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE
+! ===============================================================
+! <#Component Sets>,<Number of Component Sets>
+ #Component Sets,0
+! <Component Set>,<Component Set Count>,<Parent Object Type>,<Parent Object Name>,<Component Type>,<Component Name>,<Inlet Node ID>,<Outlet Node ID>,<Description>
+! ===============================================================
+! <# Plant Loops>,<Number of Plant Loops>
+ #Plant Loops,0
+! <Plant Loop>,<Plant Loop Name>,<Loop Type>,<Inlet Node Name>,<Outlet Node Name>,<Branch List>,<Connector List>
+! <Plant Loop Connector>,<Connector Type>,<Connector Name>,<Loop Name>,<Loop Type>,<Number of Inlets/Outlets>
+! <Plant Loop Connector Branches>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Branch>,<Outlet Branch>,<Loop Name>,<Loop Type>
+! <Plant Loop Connector Nodes>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Node>,<Outlet Node>,<Loop Name>,<Loop Type>
+! <Plant Loop Supply Connection>,<Plant Loop Name>,<Supply Side Outlet Node Name>,<Demand Side Inlet Node Name>
+! <Plant Loop Return Connection>,<Plant Loop Name>,<Demand Side Outlet Node Name>,<Supply Side Inlet Node Name>
+! ===============================================================
+! <# Condenser Loops>,<Number of Condenser Loops>
+ #Condenser Loops,0
+! <Condenser Loop>,<Condenser Loop Name>,<Loop Type>,<Inlet Node Name>,<Outlet Node Name>,<Branch List>,<Connector List>
+! <Condenser Loop Connector>,<Connector Type>,<Connector Name>,<Loop Name>,<Loop Type>,<Number of Inlets/Outlets>
+! <Condenser Loop Connector Branches>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Branch>,<Outlet Branch>,<Loop Name>,<Loop Type>
+! <Condenser Loop Connector Nodes>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Node>,<Outlet Node>,<Loop Name>,<Loop Type>
+! <Condenser Loop Supply Connection>,<Condenser Loop Name>,<Supply Side Outlet Node Name>,<Demand Side Inlet Node Name>
+! <Condenser Loop Return Connection>,<Condenser Loop Name>,<Demand Side Outlet Node Name>,<Supply Side Inlet Node Name>
+! ===============================================================
+! <# Controlled Zones>,<Number of Controlled Zones>
+ #Controlled Zones,11
+! <Controlled Zone>,<Controlled Zone Name>,<Equip List Name>,<Control List Name>,<Zone Node Name>,<# Inlet Nodes>,<# Exhaust Nodes>,<# Return Nodes>
+! <Controlled Zone Inlet>,<Inlet Node Count>,<Controlled Zone Name>,<Supply Air Inlet Node Name>,<SD Sys:Cooling/Heating [DD:Cooling] Inlet Node Name>,<DD Sys:Heating Inlet Node Name>
+! <Controlled Zone Exhaust>,<Exhaust Node Count>,<Controlled Zone Name>,<Exhaust Air Node Name>
+ Controlled Zone,ROOM_07C9946F,ROOM_07C9946F EQUIPMENT LIST,,NODE 1,1,1,0
+   Controlled Zone Inlet,1,ROOM_07C9946F,NODE 13,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_07C9946F,NODE 12
+ Controlled Zone,ROOM_2993877B,ROOM_2993877B EQUIPMENT LIST,,NODE 9,1,1,0
+   Controlled Zone Inlet,1,ROOM_2993877B,NODE 29,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_2993877B,NODE 28
+ Controlled Zone,ROOM_370F75B5,ROOM_370F75B5 EQUIPMENT LIST,,NODE 5,1,1,0
+   Controlled Zone Inlet,1,ROOM_370F75B5,NODE 21,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_370F75B5,NODE 20
+ Controlled Zone,ROOM_3AFCC8C4,ROOM_3AFCC8C4 EQUIPMENT LIST,,NODE 4,1,1,0
+   Controlled Zone Inlet,1,ROOM_3AFCC8C4,NODE 19,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_3AFCC8C4,NODE 18
+ Controlled Zone,ROOM_42CE16A9,ROOM_42CE16A9 EQUIPMENT LIST,,NODE 7,1,1,0
+   Controlled Zone Inlet,1,ROOM_42CE16A9,NODE 25,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_42CE16A9,NODE 24
+ Controlled Zone,ROOM_62D0B3DB,ROOM_62D0B3DB EQUIPMENT LIST,,NODE 10,1,1,0
+   Controlled Zone Inlet,1,ROOM_62D0B3DB,NODE 31,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_62D0B3DB,NODE 30
+ Controlled Zone,ROOM_72393597,ROOM_72393597 EQUIPMENT LIST,,NODE 3,1,1,0
+   Controlled Zone Inlet,1,ROOM_72393597,NODE 17,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_72393597,NODE 16
+ Controlled Zone,ROOM_7D1649B3,ROOM_7D1649B3 EQUIPMENT LIST,,NODE 8,1,1,0
+   Controlled Zone Inlet,1,ROOM_7D1649B3,NODE 27,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_7D1649B3,NODE 26
+ Controlled Zone,ROOM_902207CD,ROOM_902207CD EQUIPMENT LIST,,NODE 6,1,1,0
+   Controlled Zone Inlet,1,ROOM_902207CD,NODE 23,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_902207CD,NODE 22
+ Controlled Zone,ROOM_C7E3EB28,ROOM_C7E3EB28 EQUIPMENT LIST,,NODE 2,1,1,0
+   Controlled Zone Inlet,1,ROOM_C7E3EB28,NODE 15,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_C7E3EB28,NODE 14
+ Controlled Zone,ROOM_D81A4DA9,ROOM_D81A4DA9 EQUIPMENT LIST,,NODE 11,1,1,0
+   Controlled Zone Inlet,1,ROOM_D81A4DA9,NODE 33,Undefined,N/A
+   Controlled Zone Exhaust,1,ROOM_D81A4DA9,NODE 32
+! ===============================================================
+! <#Zone Equipment Lists>,<Number of Zone Equipment Lists>
+ #Zone Equipment Lists,11
+! <Zone Equipment List>,<Zone Equipment List Count>,<Zone Equipment List Name>,<Zone Name>,<Number of Components>
+! <Zone Equipment Component>,<Component Count>,<Component Type>,<Component Name>,<Zone Name>,<Heating Priority>,<Cooling Priority>
+ Zone Equipment List,1,ROOM_07C9946F EQUIPMENT LIST,ROOM_07C9946F,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_07C9946F IDEAL LOADS AIR SYSTEM,ROOM_07C9946F,1,1
+ Zone Equipment List,2,ROOM_2993877B EQUIPMENT LIST,ROOM_2993877B,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_2993877B IDEAL LOADS AIR SYSTEM,ROOM_2993877B,1,1
+ Zone Equipment List,3,ROOM_370F75B5 EQUIPMENT LIST,ROOM_370F75B5,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM,ROOM_370F75B5,1,1
+ Zone Equipment List,4,ROOM_3AFCC8C4 EQUIPMENT LIST,ROOM_3AFCC8C4,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM,ROOM_3AFCC8C4,1,1
+ Zone Equipment List,5,ROOM_42CE16A9 EQUIPMENT LIST,ROOM_42CE16A9,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM,ROOM_42CE16A9,1,1
+ Zone Equipment List,6,ROOM_62D0B3DB EQUIPMENT LIST,ROOM_62D0B3DB,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM,ROOM_62D0B3DB,1,1
+ Zone Equipment List,7,ROOM_72393597 EQUIPMENT LIST,ROOM_72393597,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_72393597 IDEAL LOADS AIR SYSTEM,ROOM_72393597,1,1
+ Zone Equipment List,8,ROOM_7D1649B3 EQUIPMENT LIST,ROOM_7D1649B3,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM,ROOM_7D1649B3,1,1
+ Zone Equipment List,9,ROOM_902207CD EQUIPMENT LIST,ROOM_902207CD,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_902207CD IDEAL LOADS AIR SYSTEM,ROOM_902207CD,1,1
+ Zone Equipment List,10,ROOM_C7E3EB28 EQUIPMENT LIST,ROOM_C7E3EB28,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM,ROOM_C7E3EB28,1,1
+ Zone Equipment List,11,ROOM_D81A4DA9 EQUIPMENT LIST,ROOM_D81A4DA9,1
+   Zone Equipment Component,1,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM,ROOM_D81A4DA9,1,1
+! ===============================================================
+! <#AirLoopHVACs>,<Number of AirLoopHVACs>
+ #AirLoopHVACs,0
+! <AirLoopHVAC>,<Air Loop Name>,<# Return Nodes>,<# Supply Nodes>,<# Zones Cooled>,<# Zones Heated>,<Outdoor Air Used>
+! <AirLoop Return Connections>,<Connection Count>,<AirLoopHVAC Name>,<Zn Eqp Return Node #>,<Zn Eqp Return Node Name>,<AirLoop Return Node #>,<Air Loop Return Node Name>
+! <AirLoop Supply Connections>,<Connection Count>,<AirLoopHVAC Name>,<Zn Eqp Supply Node #>,<Zn Eqp Supply Node Name>,<AirLoop Supply Node #>,<Air Loop Supply Node Name>
+! <Cooled Zone Info>,<Cooled Zone Count>,<Cooled Zone Name>,<Cooled Zone Inlet Node #>,<Cooled Zone Inlet Node Name>,<AirLoopHVAC Name>
+! <Heated Zone Info>,<Heated Zone Count>,<Heated Zone Name>,<Heated Zone Inlet Node #>,<Heated Zone Inlet Node Name>,<AirLoopHVAC Name>
+! <Outdoor Air Connections>,<OA Inlet Node #>,<OA Return Air Inlet Node Name>,<OA Outlet Node #>,<OA Mixed Air Outlet Node Name>,<AirLoopHVAC Name>
+! <AirLoopHVAC Connector>,<Connector Type>,<Connector Name>,<Loop Name>,<Loop Type>,<Number of Inlets/Outlets>
+! <AirLoopHVAC Connector Branches>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Branch>,<Outlet Branch>,<Loop Name>,<Loop Type>
+! <AirLoopHVAC Connector Nodes>,<Connector Node Count>,<Connector Type>,<Connector Name>,<Inlet Node>,<Outlet Node>,<Loop Name>,<Loop Type>
+! ===============================================================
+! <#Parent Node Connections>,<Number of Parent Node Connections>
+ #Parent Node Connections,0
+! <Parent Node Connection>,<Node Name>,<Node ObjectType>,<Node ObjectName>,<Node ConnectionType>,<Node FluidStream>
+! ===============================================================
+! <#Non-Parent Node Connections>,<Number of Non-Parent Node Connections>
+ #Non-Parent Node Connections,78
+! <Non-Parent Node Connection>,<Node Name>,<Node ObjectType>,<Node ObjectName>,<Node ConnectionType>,<Node FluidStream>
+ Non-Parent Node Connection,NODE 1,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_07C9946F,ZoneNode,1
+ Non-Parent Node Connection,NODE 13,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_07C9946F,ZoneInlet,1
+ Non-Parent Node Connection,NODE 12,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_07C9946F,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 9,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_2993877B,ZoneNode,1
+ Non-Parent Node Connection,NODE 29,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_2993877B,ZoneInlet,1
+ Non-Parent Node Connection,NODE 28,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_2993877B,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 5,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_370F75B5,ZoneNode,1
+ Non-Parent Node Connection,NODE 21,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_370F75B5,ZoneInlet,1
+ Non-Parent Node Connection,NODE 20,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_370F75B5,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 4,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_3AFCC8C4,ZoneNode,1
+ Non-Parent Node Connection,NODE 19,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_3AFCC8C4,ZoneInlet,1
+ Non-Parent Node Connection,NODE 18,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_3AFCC8C4,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 7,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_42CE16A9,ZoneNode,1
+ Non-Parent Node Connection,NODE 25,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_42CE16A9,ZoneInlet,1
+ Non-Parent Node Connection,NODE 24,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_42CE16A9,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 10,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_62D0B3DB,ZoneNode,1
+ Non-Parent Node Connection,NODE 31,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_62D0B3DB,ZoneInlet,1
+ Non-Parent Node Connection,NODE 30,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_62D0B3DB,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 3,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_72393597,ZoneNode,1
+ Non-Parent Node Connection,NODE 17,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_72393597,ZoneInlet,1
+ Non-Parent Node Connection,NODE 16,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_72393597,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 8,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_7D1649B3,ZoneNode,1
+ Non-Parent Node Connection,NODE 27,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_7D1649B3,ZoneInlet,1
+ Non-Parent Node Connection,NODE 26,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_7D1649B3,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 6,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_902207CD,ZoneNode,1
+ Non-Parent Node Connection,NODE 23,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_902207CD,ZoneInlet,1
+ Non-Parent Node Connection,NODE 22,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_902207CD,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 2,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_C7E3EB28,ZoneNode,1
+ Non-Parent Node Connection,NODE 15,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_C7E3EB28,ZoneInlet,1
+ Non-Parent Node Connection,NODE 14,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_C7E3EB28,ZoneExhaust,1
+ Non-Parent Node Connection,NODE 11,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_D81A4DA9,ZoneNode,1
+ Non-Parent Node Connection,NODE 33,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_D81A4DA9,ZoneInlet,1
+ Non-Parent Node Connection,NODE 32,ZONEHVAC:EQUIPMENTCONNECTIONS,ROOM_D81A4DA9,ZoneExhaust,1
+ Non-Parent Node Connection,MODEL OUTDOOR AIR NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,1
+ Non-Parent Node Connection,NODE 13,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_07C9946F IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 12,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_07C9946F IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_07C9946F IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_07C9946F IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_07C9946F IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,2
+ Non-Parent Node Connection,NODE 29,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_2993877B IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 28,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_2993877B IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_2993877B IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_2993877B IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_2993877B IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,3
+ Non-Parent Node Connection,NODE 21,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 20,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_370F75B5 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,4
+ Non-Parent Node Connection,NODE 19,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 18,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_3AFCC8C4 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,5
+ Non-Parent Node Connection,NODE 25,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 24,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_42CE16A9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,6
+ Non-Parent Node Connection,NODE 31,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 30,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_62D0B3DB IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,7
+ Non-Parent Node Connection,NODE 17,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_72393597 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 16,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_72393597 IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_72393597 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_72393597 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_72393597 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,8
+ Non-Parent Node Connection,NODE 27,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 26,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_7D1649B3 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,9
+ Non-Parent Node Connection,NODE 23,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_902207CD IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 22,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_902207CD IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_902207CD IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_902207CD IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_902207CD IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,10
+ Non-Parent Node Connection,NODE 15,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 14,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_C7E3EB28 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,11
+ Non-Parent Node Connection,NODE 33,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,NODE 32,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM,Inlet,1
+ Non-Parent Node Connection,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,ZONEHVAC:IDEALLOADSAIRSYSTEM,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM,Outlet,1
+ Non-Parent Node Connection,ROOM_D81A4DA9 IDEAL LOADS AIR SYSTEM OUTDOOR AIR INLET NODE,OUTDOORAIR:NODE,OutdoorAir:Node,OutdoorAir,12
