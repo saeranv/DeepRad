@@ -4,7 +4,6 @@ import sys
 import os
 import json
 from copy import copy
-from pathlib import Path
 
 # scientific python stuff
 import cv2
@@ -16,9 +15,9 @@ from rtree import index
 from sklearn.mixture import GaussianMixture
 from matplotlib.axes import Axes
 
-# Path to all models in deep_rad
-DEEPRAD_DATA_DIR = os.path.abspath(os.path.join(
-    os.getcwd(), '..', 'deeprad/data/models/'))
+# deeprad modules
+from .utils import to_poly_sh, to_poly_np, extract_floorplan_ids, load_floorplan_data, \
+    load_json, make_dir_safely, DEEPRAD_MODELS_DIR, DEEPRAD_GHOUT_DIR
 
 
 def viz_poly_sh_arr(poly_sh_arr, a=None, scale=1, iter=False, **kwargs):
@@ -61,28 +60,6 @@ def viz_ortho_snap_grid(x_means: np.ndarray, y_means: np.ndarray, ax: Axes, colo
                 color='red', linewidth=2, alpha=0.5, **kwargs)
 
     return ax
-
-
-def to_poly_sh(xy_arr):
-    """Shapely polygon from list of two arrays of x, y coordinates.
-
-        Args:
-            xy_arr: [x_arr, y_arr]
-    Example:
-        to_poly_sh(to_poly_np(poly_sh))
-        to_poly_np(to_poly_sh(poly_np))
-    """
-    return geom.Polygon([(x, y) for x, y in zip(*xy_arr)])
-
-
-def to_poly_np(poly_sh):
-    """Two arrays of x, y coordinates from shapely polygon.
-
-    Example:
-        to_poly_sh(to_poly_np(poly_sh))
-        to_poly_np(to_poly_sh(poly_np))
-    """
-    return np.array(poly_sh.exterior.xy)
 
 
 def rooms_equal_color_mapping(_rooms: np.ndarray) -> np.ndarray:
@@ -142,34 +119,42 @@ def contour_arr_from_bit_image(_img, threshold=False):
     return _contours
 
 
-def clean_poly_sh(poly_sh, buffer_epsilon, simplify_tol, convex_diff_pct=0.1):
+def clean_poly_sh_arr(poly_sh_arr, buffer_epsilon, simplify_tol, convex_diff_pct=0.1):
     """Applies methods to clean shapely geometry.
 
     Simplfiies w/ tolerance, buffers, and checks ccw orientation.
     """
+    clean_poly_arr = []
+    for poly_sh in poly_sh_arr:
+        # Buffer in/out to remove some geometric flaws
+        poly_sh = poly_sh.buffer(buffer_epsilon).buffer(-buffer_epsilon)
 
-    # Buffer in/out to remove some geometric flaws
-    poly_sh = poly_sh.buffer(buffer_epsilon).buffer(-buffer_epsilon)
+        if np.abs(poly_sh.area) < 1e-10:
+            continue
 
-    if np.abs(poly_sh.area) < 1e-10:
-        return None
+        # Replace with convex hull if only small change in area.
+        diff_poly_sh = poly_sh.convex_hull.difference(poly_sh)
+        diff_ptc = diff_poly_sh.area / poly_sh.area
+        if 0.0 < diff_ptc < convex_diff_pct:
+            poly_sh = poly_sh.convex_hull
 
-    # Replace with convex hull if only small change in area.
-    diff_poly_sh = poly_sh.convex_hull.difference(poly_sh)
-    diff_ptc = diff_poly_sh.area / poly_sh.area
-    if 0.0 < diff_ptc < convex_diff_pct:
-        poly_sh = poly_sh.convex_hull
+        if simplify_tol:
+            poly_sh = poly_sh.simplify(simplify_tol, preserve_topology=False)
 
-    if simplify_tol:
-        poly_sh = poly_sh.simplify(simplify_tol, preserve_topology=False)
+        if np.abs(poly_sh.area) < 1e-10:
+            continue
 
-    if np.abs(poly_sh.area) < 1e-10:
-        return None
+        if poly_sh.geom_type == 'MultiPolygon':
+            poly_sh_arr = [p for p in poly_sh]
+        else:
+            poly_sh_arr = [poly_sh]
 
-    if not poly_sh.exterior.is_ccw:
-        poly_sh = geom.polygon.orient(poly_sh, sign=1.0)
+        for poly_sh in poly_sh_arr:
+            if not poly_sh.exterior.is_ccw:
+                poly_sh = geom.polygon.orient(poly_sh, sign=1.0)
+            clean_poly_arr.append(poly_sh)
 
-    return poly_sh
+    return clean_poly_arr
 
 
 def poly_sh_rtree(poly_sh_arr):
@@ -228,6 +213,25 @@ def filter_parent_polys(polys_sh, scale=1):
         # get rid of false positives
         hits = [h for h in hits if poly_sh.contains(
             polys_sh[h].buffer(-0.5 * scale))]
+
+        if len(hits) <= 1:
+            # child polygons, 1 indicates they contain themselves
+            _polys_sh.append(poly_sh)
+
+    return _polys_sh
+
+
+def filter_intersect_polys(polys_sh):
+    """Remove intersections."""
+    polys_sh = [p.buffer(0) for p in polys_sh]
+    ridx = poly_sh_rtree(polys_sh)
+    _polys_sh = []
+    for poly_sh in polys_sh:
+        hits = ridx.intersection(poly_sh.bounds)
+        hits = list(hits)
+
+        # get rid of false positives
+        hits = [h for h in hits if poly_sh.intersection(polys_sh[h])]
 
         if len(hits) <= 1:
             # child polygons, 1 indicates they contain themselves
@@ -420,77 +424,184 @@ def get_cluster_coord_fx(x_gauss_mod, y_gauss_mod):
     return _get_cluster_coord_fx
 
 
-def extract_floorplan_ids(data_num):
-    """Safely extract root model directories for polygon extraction."""
+def _ugly_loop(model_id, scale, doors, _rooms, targ_id_dir):
 
-    # Load all model directories
-    floorplan_id_arr = os.listdir(DEEPRAD_DATA_DIR)
-    n_ids = len(floorplan_id_arr)
+    # -------------------------------------------------------------
+    # Extract/remove image data
+    # -------------------------------------------------------------
+    # Remove balconies, railings, and walls
+    _rooms = np.where(_rooms == 1, 0, _rooms)
+    _rooms = np.where(_rooms == 8, 0, _rooms)
+    _rooms = np.where(_rooms == 2, 0, _rooms)
 
-    if n_ids == 0:
-        raise Exception('No image files. Add images and try again.')
+    # -------------------------------------------------------------
+    # Get door_vec data for scaling
+    # -------------------------------------------------------------
+    door_lens = []
+    for door in doors:
+        pts, _ = door[0], door[1]
+        pts = np.array(pts) * scale
+        door_vec = pts[1] - pts[0]
+        door_len = np.sum(door_vec ** 2) ** 0.5
+        door_lens.append(door_len)
 
-    if data_num > n_ids:
-        print('Note: data_num {} is too high. Resetting to n_ids {}.'.format(
-            data_num, n_ids))
-        data_num = n_ids
+    door_lens = np.array(door_lens)
+    meter_scale = 0.9 / door_lens.mean()
+    image_scale = 1 / meter_scale
 
-    return data_num, floorplan_id_arr
+    # Gut check the scale
+    _dim = np.where(np.sum(_rooms, axis=0) > 1, 0, 1)
+    _dim = contiguous_ones_idx(_dim)
+    diff = _dim[:, 1] - _dim[:, 0]
+    diff = np.diff(_dim, n=1, axis=1).ravel()
+    _dim = _rooms.shape[1] - np.sum(diff)
 
+    # -------------------------------------------------------------
+    # Take first order derivative for thresholding.
+    # -------------------------------------------------------------
+    room = _rooms.astype(np.float64)
+    dx = np.abs(np.diff(room, axis=0, prepend=0.0))
+    dy = np.abs(np.diff(room, axis=1, prepend=0.0))
+    diff = dx + dy
+    diff = np.where(diff > 0, 255, 0)
+    threshed_rooms = diff.astype(np.uint8)
 
-def load_json(json_fpath):
-    with open(json_fpath, 'r') as fp:
-        val_dict = json.load(fp)
+    # -------------------------------------------------------------
+    # Get contour w/ opencv.
+    # -------------------------------------------------------------
+    _contour_arr = contour_arr_from_bit_image(
+        threshed_rooms, threshold=True)[:-1]
+    _poly_np_arr = [contour_to_poly_np(contour)
+                    for contour in _contour_arr]
+    _poly_sh_arr = [to_poly_sh(poly_np) for poly_np in _poly_np_arr]
 
-    return val_dict
+    beps, stol, dpct = 5, 0.25 * image_scale, 0.05
+    _poly_sh_arr = clean_poly_sh_arr(_poly_sh_arr, beps, stol, dpct)
 
+    # -------------------------------------------------------------
+    # Scale and shift
+    # -------------------------------------------------------------
+    # TODO: do this at the beginning after doors.
+    poly_sh_arr = [copy(p) for p in _poly_sh_arr]
+    unscaled_poly_sh_arr = [copy(p) for p in _poly_sh_arr]
+    poly_sh_arr = move_poly_sh_arr(poly_sh_arr)
+    poly_sh_arr = [affinity.scale(
+        p, meter_scale, meter_scale, origin=(0, 0)) for p in poly_sh_arr]
 
-def load_floorplan_data(targ_id_dirs, data_num):
-    """Load floorplan data."""
+    # -------------------------------------------------------------
+    # Filter polygon checks.
+    # -------------------------------------------------------------
 
-    src_img_arr = [0] * data_num
-    label_img_arr = [0] * data_num
-    hdict_arr = [0] * data_num
-    targ_id_dir_arr = [0] * data_num
+    n_poly_sh = len(poly_sh_arr)
+    ridx = poly_sh_rtree(poly_sh_arr)
+    # print('num @', n_poly_sh)
 
-    i = -1
-    idx = -1
-    total_i = 0
-    null_lst = []
+    # TODO: set scale tol
+    gap_tol = 1.0
+    poly_sh_arr = filter_duplicate_polys(ridx, poly_sh_arr, gap_tol)
+    # _dup_diff = n_poly_sh - len(poly_sh_arr)
+    # print('Removed:', _dup_diff, 'duplicates; num @', len(poly_sh_arr))
 
-    while (idx + 1) < data_num:
-        i += 1
-        targ_id_dir = os.path.join(
-            DEEPRAD_DATA_DIR, targ_id_dirs[i], 'data')
-        targ_src_fpath = os.path.join(targ_id_dir, 'src.jpg')
-        targ_label_fpath = os.path.join(targ_id_dir, 'label.jpg')
-        targ_json_fpath = os.path.join(targ_id_dir, 'door_vecs.json')
+    area_tol, side_tol = 2, 1
+    poly_sh_arr = filter_by_size(
+        poly_sh_arr, area_tol, side_tol, 1)
+    # _sml_diff = n_poly_sh - _dup_diff - len(poly_sh_arr)
+    # print('Removed:', _sml_diff, 'smalls; num @', len(poly_sh_arr))
 
-        hdict = load_json(targ_json_fpath)
+    poly_sh_arr = filter_parent_polys(poly_sh_arr, 1)
+    # _par_diff = n_poly_sh - _sml_diff - len(poly_sh_arr)
+    # print('Removed:', _par_diff, 'parents; num @', len(poly_sh_arr))
+    # print('num: ', len(poly_sh_arr))
 
-        if hdict['scale'] < 0.4:
-            print('Skip {} b/c scale at {}. Total skipped={}.'.format(
-                  targ_id_dirs[i], hdict['scale'], total_i))
-            total_i += 1
-            continue
+    # -------------------------------------------------------------
+    # Compute projections.
+    # -------------------------------------------------------------
 
-        idx += 1
-        hdict_arr[idx] = hdict
-        src_img_arr[idx] = cv2.imread(targ_src_fpath, cv2.COLOR_BGR2RGB)
-        label_img_arr[idx] = cv2.imread(targ_label_fpath, cv2.IMREAD_GRAYSCALE)
-        targ_id_dir_arr[idx] = targ_id_dir
-        null_lst.append(targ_id_dirs[i] + '\n')
+    xproj_, yproj_ = xy_projection(unscaled_poly_sh_arr)
+    xproj, yproj = xy_projection(poly_sh_arr)
 
-    # Write to null list
-    null_fpath = os.path.join(DEEPRAD_DATA_DIR, '_null.txt')
-    with open(null_fpath, 'w') as fp:
-        #[fp.writeline(null_) for null_ in null_lst]
-        fp.writelines(null_lst)
-    return hdict_arr, src_img_arr, label_img_arr, targ_id_dir_arr
+    # Calculate cluster number for x/y axis
+    gap_tol = 0.5 * image_scale
+    x_ncomps, y_ncomps = estimate_1d_cluster_num(
+        xproj_, yproj_, gap_tol, False)
+    # print('x comp: {}, y comp: {}'.format(x_ncomps, y_ncomps))
 
+    _poly_sh_arr = poly_sh_arr
 
-def make_dir_safely(dest_dir):
-    Path(dest_dir).mkdir(parents=True, exist_ok=True)
+    # -------------------------------------------------------------
+    # Compute gaussian mixture models
+    # -------------------------------------------------------------
+    random_seed = 111
+    poly_sh_arr = [copy(p) for p in _poly_sh_arr]
+
+    # swap axis on yproj to be on xaxis
+    _FLIP_ORTHO2D_MTX = np.array([[0, 1], [1, 0]])
+    yproj_swap = yproj @ _FLIP_ORTHO2D_MTX
+
+    # tol = 25.0  # door width
+    # tar_var = (tol / 2) ** 2
+    init_var = 2.0
+    x_gauss_mod = gauss_mixture_1d(
+        xproj, x_ncomps, init_var, random_seed)
+    y_gauss_mod = gauss_mixture_1d(
+        yproj_swap, y_ncomps, init_var, random_seed)
+
+    # -------------------------------------------------------------
+    # Predict cluster and snap to orthogrid
+    # -------------------------------------------------------------
+    _cluster_fx = get_cluster_coord_fx(x_gauss_mod, y_gauss_mod)
+    buff_eps, simple_tol, diff_pct = 1, 0.5, 0.05
+
+    # polyc_sh =
+    poly_sh_arr_ = [_cluster_fx(to_poly_np(poly_sh).T)
+                    for poly_sh in poly_sh_arr]
+    poly_sh_arr_ = [to_poly_sh(poly_np) for poly_np in poly_sh_arr_]
+    poly_sh_arr_ = clean_poly_sh_arr(
+        poly_sh_arr_, buff_eps, simple_tol, diff_pct)
+
+    # -------------------------------------------------------------
+    # Filter triangles and intersections
+    # -------------------------------------------------------------
+    # orig_len = len(poly_sh_arr_)
+    # poly_sh_arr_ = filter_intersect_polys(poly_sh_arr_)
+    # poly_sh_arr_ = [poly for poly in poly_sh_arr_
+    #                 if to_poly_np(poly).shape[1] == 4]
+
+    # if np.abs(len(poly_sh_arr_) - orig_len) > 2:
+    #     recurse
+
+    poly_sh_arr = poly_sh_arr_
+    # print(poly_sh_arr)
+
+    # -------------------------------------------------------------
+    # Dump data.
+    # -------------------------------------------------------------
+    def write_json(polygon_dict, dest_fpath):
+        """Writes dict to json."""
+        with open(dest_fpath, 'w') as fp:
+            json.dump(polygon_dict, fp, indent=4)
+
+    # Dump polygons as numpy arrays
+    polygon_json_fpath = os.path.join(targ_id_dir, 'polygon.json')
+    polygon_dict = {'polygons': [to_poly_np(poly_sh).tolist()
+                                 for poly_sh in poly_sh_arr]}
+    write_json(polygon_dict, polygon_json_fpath)
+
+    # -------------------------------------------------------------
+    # Make image folders for train_test
+    # -------------------------------------------------------------
+    train_test_id_dir = os.path.join(
+        DEEPRAD_GHOUT_DIR, model_id)
+    train_test_id_dir = os.path.abspath(train_test_id_dir)
+    make_dir_safely(train_test_id_dir)
+
+    # Make i/o dirs
+    out_dir = os.path.join(train_test_id_dir, 'out_label')
+    in_dir = os.path.join(train_test_id_dir, 'in_data')
+    make_dir_safely(out_dir)
+    make_dir_safely(in_dir)
+
+    return polygon_json_fpath
 
 
 def main(data_num):
@@ -500,189 +611,24 @@ def main(data_num):
     hdicts, _, labels, targ_id_dirs = load_floorplan_data(targ_ids, data_num)
 
     print('\nWriting {} polygon json files in {}.\n'.format(
-          data_num, DEEPRAD_DATA_DIR))
+          data_num, DEEPRAD_MODELS_DIR))
 
     for ii, (hdict, _rooms, targ_id_dir) in enumerate(zip(hdicts, labels, targ_id_dirs)):
 
         model_id = hdict['id']
-
-        # -------------------------------------------------------------
-        # Extract/remove image data
-        # -------------------------------------------------------------
         scale = hdict['scale']
         doors = hdict['door_vecs']
+        polygon_json_fpath = None
 
-        # Remove balconies, railings, and walls
-        _rooms = np.where(_rooms == 1, 0, _rooms)
-        _rooms = np.where(_rooms == 8, 0, _rooms)
-        _rooms = np.where(_rooms == 2, 0, _rooms)
+        try:
+            polygon_json_fpath = _ugly_loop(
+                model_id, scale, doors, _rooms, targ_id_dir)
+        except:
+            print('Fail {}'.format(model_id))
 
-        # -------------------------------------------------------------
-        # Get door_vec data for scaling
-        # -------------------------------------------------------------
-        door_lens = []
-        for door in doors:
-            pts, _ = door[0], door[1]
-            pts = np.array(pts) * scale
-            door_vec = pts[1] - pts[0]
-            door_len = np.sum(door_vec ** 2) ** 0.5
-            door_lens.append(door_len)
-
-        door_lens = np.array(door_lens)
-        meter_scale = 0.9 / door_lens.mean()
-        image_scale = 1 / meter_scale
-
-        # Gut check the scale
-        _dim = np.where(np.sum(_rooms, axis=0) > 1, 0, 1)
-        _dim = contiguous_ones_idx(_dim)
-        diff = _dim[:, 1] - _dim[:, 0]
-        diff = np.diff(_dim, n=1, axis=1).ravel()
-        _dim = _rooms.shape[1] - np.sum(diff)
-
-        # -------------------------------------------------------------
-        # Take first order derivative for thresholding.
-        # -------------------------------------------------------------
-        room = _rooms.astype(np.float64)
-        dx = np.abs(np.diff(room, axis=0, prepend=0.0))
-        dy = np.abs(np.diff(room, axis=1, prepend=0.0))
-        diff = dx + dy
-        diff = np.where(diff > 0, 255, 0)
-        threshed_rooms = diff.astype(np.uint8)
-
-        # -------------------------------------------------------------
-        # Get contour w/ opencv.
-        # -------------------------------------------------------------
-        _contour_arr = contour_arr_from_bit_image(
-            threshed_rooms, threshold=True)[:-1]
-        _poly_np_arr = [contour_to_poly_np(contour)
-                        for contour in _contour_arr]
-        _poly_sh_arr = [to_poly_sh(poly_np) for poly_np in _poly_np_arr]
-
-        beps, stol, dpct = 5, 0.25 * image_scale, 0.05
-        def _clean_poly_sh(p): return clean_poly_sh(p, beps, stol, dpct)
-        _poly_sh_arr = [_clean_poly_sh(_poly_sh)
-                        for _poly_sh in _poly_sh_arr]
-        _poly_sh_arr = [p for p in _poly_sh_arr if p is not None]
-
-        # -------------------------------------------------------------
-        # Scale and shift
-        # -------------------------------------------------------------
-        # TODO: do this at the beginning after doors.
-        poly_sh_arr = [copy(p) for p in _poly_sh_arr]
-        unscaled_poly_sh_arr = [copy(p) for p in _poly_sh_arr]
-        poly_sh_arr = move_poly_sh_arr(poly_sh_arr)
-        poly_sh_arr = [affinity.scale(
-            p, meter_scale, meter_scale, origin=(0, 0)) for p in poly_sh_arr]
-
-        # -------------------------------------------------------------
-        # Filter polygon checks.
-        # -------------------------------------------------------------
-
-        n_poly_sh = len(poly_sh_arr)
-        ridx = poly_sh_rtree(poly_sh_arr)
-        # print('num @', n_poly_sh)
-
-        # TODO: set scale tol
-        gap_tol = 1.0
-        poly_sh_arr = filter_duplicate_polys(ridx, poly_sh_arr, gap_tol)
-        # _dup_diff = n_poly_sh - len(poly_sh_arr)
-        # print('Removed:', _dup_diff, 'duplicates; num @', len(poly_sh_arr))
-
-        area_tol, side_tol = 2, 1
-        poly_sh_arr = filter_by_size(
-            poly_sh_arr, area_tol, side_tol, 1)
-        # _sml_diff = n_poly_sh - _dup_diff - len(poly_sh_arr)
-        # print('Removed:', _sml_diff, 'smalls; num @', len(poly_sh_arr))
-
-        poly_sh_arr = filter_parent_polys(poly_sh_arr, 1)
-        # _par_diff = n_poly_sh - _sml_diff - len(poly_sh_arr)
-        # print('Removed:', _par_diff, 'parents; num @', len(poly_sh_arr))
-        # print('num: ', len(poly_sh_arr))
-
-        # -------------------------------------------------------------
-        # Compute projections.
-        # -------------------------------------------------------------
-
-        xproj_, yproj_ = xy_projection(unscaled_poly_sh_arr)
-        xproj, yproj = xy_projection(poly_sh_arr)
-
-        # Calculate cluster number for x/y axis
-        gap_tol = 0.5 * image_scale
-        x_ncomps, y_ncomps = estimate_1d_cluster_num(
-            xproj_, yproj_, gap_tol, False)
-        # print('x comp: {}, y comp: {}'.format(x_ncomps, y_ncomps))
-
-        _poly_sh_arr = poly_sh_arr
-
-        # -------------------------------------------------------------
-        # Compute gaussian mixture models
-        # -------------------------------------------------------------
-
-        random_seed = 111
-        poly_sh_arr = [copy(p) for p in _poly_sh_arr]
-
-        # swap axis on yproj to be on xaxis
-        _FLIP_ORTHO2D_MTX = np.array([[0, 1], [1, 0]])
-        yproj_swap = yproj @ _FLIP_ORTHO2D_MTX
-
-        # tol = 25.0  # door width
-        # tar_var = (tol / 2) ** 2
-        init_var = 2.0
-        x_gauss_mod = gauss_mixture_1d(
-            xproj, x_ncomps, init_var, random_seed)
-        y_gauss_mod = gauss_mixture_1d(
-            yproj_swap, y_ncomps, init_var, random_seed)
-
-        # -------------------------------------------------------------
-        # Predict cluster and snap to orthogrid
-        # -------------------------------------------------------------
-        _cluster_fx = get_cluster_coord_fx(x_gauss_mod, y_gauss_mod)
-        buff_eps, simple_tol, diff_pct = 1, 0.5, 0.05
-
-        poly_sh_arr_ = []
-        for poly_sh in poly_sh_arr:
-            poly_np = _cluster_fx(to_poly_np(poly_sh).T)
-            polyc_sh = to_poly_sh(poly_np)
-            polyc_sh = clean_poly_sh(polyc_sh, buff_eps, simple_tol, diff_pct)
-            if polyc_sh is None or polyc_sh.area < 1e-10 or polyc_sh.exterior is None:
-                continue
-            poly_sh_arr_.append(polyc_sh)
-
-        poly_sh_arr = poly_sh_arr_
-
-        # -------------------------------------------------------------
-        # Dump data.
-        # -------------------------------------------------------------
-        def write_json(polygon_dict, dest_fpath):
-            """Writes dict to json."""
-            with open(dest_fpath, 'w') as fp:
-                json.dump(polygon_dict, fp, indent=4)
-
-        # Dump polygons as numpy arrays
-        polygon_json_fpath = os.path.join(targ_id_dir, 'polygon.json')
-        polygon_dict = {'polygons': [to_poly_np(poly_sh).tolist()
-                                     for poly_sh in poly_sh_arr]}
-        write_json(polygon_dict, polygon_json_fpath)
-
-        # -------------------------------------------------------------
-        # Make image folders for train_test
-        # -------------------------------------------------------------
-        train_test_id_dir = os.path.join(
-            DEEPRAD_DATA_DIR, '..', 'train_test', model_id)
-        train_test_id_dir = os.path.abspath(train_test_id_dir)
-        make_dir_safely(train_test_id_dir)
-
-        # Make i/o dirs
-        out_dir = os.path.join(train_test_id_dir, 'out_label')
-        in_dir = os.path.join(train_test_id_dir, 'in_data')
-        make_dir_safely(out_dir)
-        make_dir_safely(in_dir)
-
-        # -------------------------------------------------------------
-        # Finish
-        # -------------------------------------------------------------
-        print('{}/{}: wrote {} polygon to {}'.format(
-              ii + 1, data_num, targ_ids[ii], polygon_json_fpath))
+        if polygon_json_fpath:
+            print('{}/{}: wrote {} polygon to {}'.format(
+                ii + 1, data_num, targ_ids[ii], polygon_json_fpath))
 
 
 if __name__ == "__main__":
@@ -693,6 +639,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         argv = sys.argv[1:]
         if '--data_num' in argv:
-            data_num = int(argv[1])
+            i = argv.index('--data_num')
+            data_num = int(argv[i + 1])
 
     main(data_num)

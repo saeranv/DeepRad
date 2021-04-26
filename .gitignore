@@ -128,9 +128,14 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Git
+.git-credentials
+/.git-credentials
+
 # Honeybee/Ladybug data
 /run
-/models
+data/models/
+data/ghout/
 *.sql
 
 
