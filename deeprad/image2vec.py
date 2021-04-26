@@ -17,7 +17,7 @@ from matplotlib.axes import Axes
 
 # deeprad modules
 from .utils import to_poly_sh, to_poly_np, extract_floorplan_ids, load_floorplan_data, \
-    load_json, make_dir_safely, DEEPRAD_MODELS_DIR
+    load_json, make_dir_safely, DEEPRAD_MODELS_DIR, DEEPRAD_GHOUT_DIR
 
 
 def viz_poly_sh_arr(poly_sh_arr, a=None, scale=1, iter=False, **kwargs):
@@ -404,7 +404,7 @@ def main(data_num):
     hdicts, _, labels, targ_id_dirs = load_floorplan_data(targ_ids, data_num)
 
     print('\nWriting {} polygon json files in {}.\n'.format(
-          data_num, DEEPRAD_DATA_DIR))
+          data_num, DEEPRAD_MODELS_DIR))
 
     for ii, (hdict, _rooms, targ_id_dir) in enumerate(zip(hdicts, labels, targ_id_dirs)):
 
@@ -571,7 +571,7 @@ def main(data_num):
         # Make image folders for train_test
         # -------------------------------------------------------------
         train_test_id_dir = os.path.join(
-            DEEPRAD_DATA_DIR, '..', 'train_test', model_id)
+            DEEPRAD_GHOUT_DIR, model_id)
         train_test_id_dir = os.path.abspath(train_test_id_dir)
         make_dir_safely(train_test_id_dir)
 

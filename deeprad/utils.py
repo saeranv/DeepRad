@@ -5,6 +5,9 @@ import json
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
+import cv2
+from typing import List
+import shapely.geometry as geom
 
 # Path to all models in deep_rad
 DEEPRAD_MODELS_DIR = os.path.abspath(os.path.join(
@@ -43,6 +46,10 @@ def load_img_gray(img_fpath: str) -> np.ndarray:
 
 def load_img_rgb(img_fpath: str) -> np.ndarray:
     return cv2.imread(img_fpath, cv2.COLOR_BGR2RGB)
+
+
+def write_img(img: np.ndarray, img_fpath: str) -> bool:
+    return cv2.imwrite(img_fpath, img)
 
 
 def extract_floorplan_ids(data_num, target_data_dir=None, verbose=True):
@@ -105,7 +112,7 @@ def load_floorplan_data(targ_id_dirs, data_num):
 
         idx += 1
         hdict_arr[idx] = hdict
-        src_img_arr[idx] = koad_img_rgb(targ_src_fpath)
+        src_img_arr[idx] = load_img_rgb(targ_src_fpath)
         label_img_arr[idx] = load_img_gray(targ_label_fpath)
         targ_id_dir_arr[idx] = targ_id_dir
         null_lst.append(targ_id_dirs[i] + '\n')
@@ -113,10 +120,33 @@ def load_floorplan_data(targ_id_dirs, data_num):
     # Write to null list
     null_fpath = os.path.join(DEEPRAD_MODELS_DIR, '_null.txt')
     with open(null_fpath, 'w') as fp:
-        #[fp.writeline(null_) for null_ in null_lst]
+        # [fp.writeline(null_) for null_ in null_lst]
         fp.writelines(null_lst)
     return hdict_arr, src_img_arr, label_img_arr, targ_id_dir_arr
 
 
 def make_dir_safely(dest_dir):
     Path(dest_dir).mkdir(parents=True, exist_ok=True)
+
+
+def fname_from_fpath(fpath):
+    """Splits filename from extension and preceding directories."""
+    return Path(fpath).stem
+
+
+def to_multi_channel_img(imgs: List[np.ndarray]):
+    """Safely constructs a multichannel image from multiple grayscale images."""
+
+    n_channels = len(imgs)
+
+    assert np.all([np.array_equal([len(img.shape)], [2])
+                  for img in imgs]), 'img must be 2d grayscale.'
+
+    assert np.all([np.array_equal(img.shape, imgs[0].shape) for img in imgs]), \
+        'All images must be same shape. Got {}.'.format(
+            [img.shape for img in imgs])
+
+    cat_img = np.dstack(imgs)  # Concat depthwise channels
+    assert cat_img.shape[2] == n_channels
+
+    return cat_img
