@@ -17,9 +17,10 @@ def preprocess_img(img_lst: List[np.ndarray], downsample: int = 1) -> np.ndarray
     """Preprocess image for traintest."""
 
     ret_img = None
-    # TODO: contiguous ones and trim.
-    # concatenate all images acrosss x-axis
 
+    # TODO: contiguous ones and trim.
+
+    # concatenate all images acrosss x-axis
     ret_img = np.concatenate(img_lst, axis=1)
 
     # check dim

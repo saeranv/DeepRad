@@ -8,6 +8,7 @@ import numpy as np
 import cv2
 from typing import List
 import shapely.geometry as geom
+from pprint import pprint
 
 # Path to all models in deep_rad
 DEEPRAD_MODELS_DIR = os.path.abspath(os.path.join(
@@ -16,6 +17,19 @@ DEEPRAD_GHOUT_DIR = os.path.abspath(os.path.join(
     os.getcwd(), '..', 'deeprad/data/ghout/'))
 DEEPRAD_TRAINTEST_DIR = os.path.abspath(os.path.join(
     os.getcwd(), '..', 'deeprad/data/traintest/'))
+
+
+def pp(x, *args):
+    pprint(x) if not args else print(x, *args)
+
+
+def fd(module, key=None):
+    """ To efficiently search modules."""
+    def hfd(m, k): return k.lower() in m.lower()
+    if key is None:
+        return [m for m in dir(module)][::-1]
+    else:
+        return [m for m in dir(module) if hfd(m, key)][::-1]
 
 
 def to_poly_sh(xy_arr):
@@ -104,11 +118,11 @@ def load_floorplan_data(targ_id_dirs, data_num):
 
         hdict = load_json(targ_json_fpath)
 
-        if hdict['scale'] < 0.4:
-            print('Skip {} b/c scale at {}. Total skipped={}.'.format(
-                  targ_id_dirs[i], hdict['scale'], total_i))
-            total_i += 1
-            continue
+        # if hdict['scale'] < 0.4:
+        #     print('Skip {} b/c scale at {}. Total skipped={}.'.format(
+        #           targ_id_dirs[i], hdict['scale'], total_i))
+        #     total_i += 1
+        #     continue
 
         idx += 1
         hdict_arr[idx] = hdict
