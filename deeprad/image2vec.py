@@ -596,6 +596,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         argv = sys.argv[1:]
         if '--data_num' in argv:
-            data_num = int(argv[1])
+            i = argv.index('--data_num')
+            data_num = int(argv[i + 1])
 
     main(data_num)

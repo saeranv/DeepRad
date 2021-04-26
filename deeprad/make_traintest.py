@@ -1,4 +1,5 @@
 """Preprocess raw outputs from GHOUT_DIR for train/test dataset."""
+import sys
 import os
 import numpy as np
 from typing import List
@@ -32,8 +33,11 @@ def preprocess_img(img_lst: List[np.ndarray], downsample: int = 1) -> np.ndarray
     return ret_img
 
 
-def in_channel_set(in_fpaths: List[str]) -> dict:
+def make_channel_set(floorplan_id) -> set:
     """Creates dictionary of unqiue channels from input directory."""
+
+    in_dir = os.path.join(DEEPRAD_GHOUT_DIR, floorplan_id, 'in_data')
+    in_fpaths = [os.path.join(in_dir, _in) for _in in os.listdir(in_dir)]
 
     chset = set()
     for fpath in in_fpaths:
@@ -45,52 +49,79 @@ def in_channel_set(in_fpaths: List[str]) -> dict:
     return chset
 
 
-def main():
+def preprocess_traintest_out(floorplan_id: str) -> None:
+    """Preprocess traintest_out"""
+
+    # Get directories
+    out_dir = os.path.join(DEEPRAD_GHOUT_DIR, floorplan_id, 'out_label')
+
+    label_fpaths = [os.path.join(out_dir, _out)
+                    for _out in os.listdir(out_dir)]
+    label_imgs = [utils.load_img_gray(f) for f in label_fpaths]
+    out_img = preprocess_img(label_imgs)
+    out_img_fpath = os.path.join(
+        DEEPRAD_TRAINTEST_DIR, 'out_data', "out_{}.jpg".format(floorplan_id))
+    assert utils.write_img(out_img, out_img_fpath)
+
+
+def preprocess_traintest_in(floorplan_id: str, chset: set) -> None:
+    """Preprocess traintest_in"""
+
+    in_dir = os.path.join(DEEPRAD_GHOUT_DIR, floorplan_id, 'in_data')
+    in_fpaths = [os.path.join(in_dir, _in) for _in in os.listdir(in_dir)]
+
+    # Concat multiple images into one image depthwise (as chennels)
+    for j, ch in enumerate(chset):
+        ch_fpaths = [in_fpath for in_fpath in in_fpaths if ch in in_fpath]
+        _ch_imgs = [utils.load_img_gray(ch_fpath)
+                    for ch_fpath in ch_fpaths]
+        _ch_img = preprocess_img(_ch_imgs)  # concats across xdim
+        in_img_fpath = os.path.join(
+            DEEPRAD_TRAINTEST_DIR, 'in_data', "in_{}_{}.jpg".format(ch, floorplan_id))
+        assert utils.write_img(_ch_img, in_img_fpath), 'Image {} failed to save ' \
+            'in_img_fpath'.format(in_img_fpath)
+
+    return chset
+
+
+def main(verbose=True, nuke_all=True):
     """Preproces main."""
 
     # load all directories in train/test
     data_num, floorplan_ids = \
         utils.extract_floorplan_ids(1e6, DEEPRAD_GHOUT_DIR, verbose=False)
 
-    chset = set()
+    if nuke_all:
+        in_old_imgs = os.listdir(os.path.join(
+            DEEPRAD_TRAINTEST_DIR, 'in_data'))
+        out_old_imgs = os.listdir(os.path.join(
+            DEEPRAD_TRAINTEST_DIR, 'out_data'))
 
-    # for i, floorplan_id in enumerate(floorplan_ids):
-    i = 0
-    floorplan_id = floorplan_ids[0]
+        [os.remove(os.path.join(DEEPRAD_TRAINTEST_DIR, 'in_data', old_img))
+         for old_img in in_old_imgs]
+        [os.remove(os.path.join(DEEPRAD_TRAINTEST_DIR, 'out_data', old_img))
+         for old_img in out_old_imgs]
 
-    # Make filepaths and directores
-    in_dir = os.path.join(DEEPRAD_GHOUT_DIR, floorplan_id, 'in_data')
-    out_dir = os.path.join(DEEPRAD_GHOUT_DIR, floorplan_id, 'out_label')
-    in_img_fpath = os.path.join(
-        DEEPRAD_TRAINTEST_DIR, "in_{}.jpg".format(floorplan_id))
-    out_img_fpath = os.path.join(
-        DEEPRAD_TRAINTEST_DIR, "out_{}.jpg".format(floorplan_id))
+    chset = make_channel_set(floorplan_ids[0])
+    n_floorplans = data_num
 
-    # # Preprocess traintest_out
-    # label_fpaths = [os.path.join(out_dir, _out)
-    #                 for _out in os.listdir(out_dir)]
-    # label_imgs = [utils.load_img_gray(f) for f in label_fpaths]
-    # out_img = preprocess_img(label_imgs)
-    # assert utils.write_img(out_img, out_img_fpath)
+    for i, floorplan_id in enumerate(floorplan_ids):
 
-    # Preprocess traintest_in
-    in_fpaths = [os.path.join(in_dir, _in) for _in in os.listdir(in_dir)]
-    in_fpaths = [os.path.join(in_dir, _in) for _in in os.listdir(in_dir)]
-    if len(chset) == 0:
-        chset = in_channel_set(in_fpaths)
+        if verbose:
+            print('{}/{} Preprocessing {}.'.format(i +
+                  1, n_floorplans, floorplan_id))
 
-    # Concat multiple images into one image depthwise (as chennels)
-    n_channels = len(chset)  # number of channels
-    ch_imgs = [0] * n_channels
-    for j, ch in enumerate(chset):
-        ch_fpaths = [in_fpath for in_fpath in in_fpaths if ch in in_fpath]
-        _ch_imgs = [utils.load_img_gray(ch_fpath) for ch_fpath in ch_fpaths]
-        ch_imgs[j] = preprocess_img(_ch_imgs)  # concats across xdim
-    print(floorplan_id)
-    # print(ch_imgs)
-    in_img = utils.to_multi_channel_img(ch_imgs)
-    assert utils.write_img(in_img, in_img_fpath)
+        preprocess_traintest_out(floorplan_id)
+        preprocess_traintest_in(floorplan_id, chset)
 
 
 if __name__ == "__main__":
-    main()
+
+    nuke_all = True
+    if len(sys.argv) > 1:
+        argv = sys.argv[1:]
+        if '--nuke_all' in argv:
+            i = argv.index('--nuke_all')
+            nuke_all = bool(argv[i + 1])
+
+    main(nuke_all=nuke_all)

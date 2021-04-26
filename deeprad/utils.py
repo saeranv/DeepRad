@@ -134,8 +134,8 @@ def fname_from_fpath(fpath):
     return Path(fpath).stem
 
 
-def to_multi_channel_img(imgs: List[np.ndarray]):
-    """Safely constructs a multichannel image from multiple grayscale images."""
+def to_multi_channel_img_arr(imgs: List[np.ndarray]):
+    """Safely constructs a multichannel array from multiple grayscale images."""
 
     n_channels = len(imgs)
 
