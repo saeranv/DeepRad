@@ -204,16 +204,17 @@ def train(model, num_epochs=5, batch_size=4, learning_rate=1e-3):
     return outputs
 
 
-def color2rad(img):
+def color2rad(img, mask=False):
     """img is np.ndarray of floats btwn 0 - 1"""
     img = (img * 255).astype(np.uint8)
-    # TODO: add a mask here
-    img = np.where(img < (255 - 1e-10), img, np.nan)
+    # TODO: add a mask here??
+    if mask:
+        img = np.where(img < (255 - 1e-10), img, np.nan)
     return img
 
 
 model = Autoencoder()
-max_epochs = 1  # 30
+max_epochs = 30
 outputs = train(model, num_epochs=max_epochs)
 
 # print(len(outputs))
