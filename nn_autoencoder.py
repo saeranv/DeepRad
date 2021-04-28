@@ -16,6 +16,7 @@ import glob
 import math
 import random
 import re
+import time
 
 
 RADCMAP = plt.get_cmap('RdYlBu_r')
@@ -107,7 +108,7 @@ class Autoencoder(nn.Module):
 class CustomDataSet(Dataset):
     def __init__(self, main_dir, ch_dir, transform):
         self.main_dir = main_dir
-        self.c1_dir = ch_dir
+        self.ch_dir = ch_dir
         # self.c2_dir = c2_dir
 
         self.transform = transform
@@ -117,11 +118,14 @@ class CustomDataSet(Dataset):
 
         all_imgs = self.sort_img(all_imgs)
         ch_imgs = self.sort_img(ch_imgs)
-        # c2_imgs = self.sort_img(c2_imgs)
+
+        ch_1, ch_2 = self.split_channels(ch_imgs)
+
 
         self.total_imgs = all_imgs
-        self.ch_imgs = ch_imgs
-        # self.c2_imgs = c2_imgs
+        self.ch_1 = ch_1
+        self.ch_2 = ch_2
+
 
     def sort_img(self, l):
         keys = []
@@ -133,49 +137,66 @@ class CustomDataSet(Dataset):
 
         _, sorted_list = (list(t) for t in zip(*sorted(zip(keys, names))))
         # print(sorted_list[:5])
+
         return sorted_list
+    
+    def split_channels(self, l):
+        c1, c2 = [], []
+        channels = iter(l)
+        for x in channels:
+            c1.append(x)
+            c2.append(next(channels))
+        
+        return c1, c2
 
     def __len__(self):
         return len(self.total_imgs)
 
     def __getitem__(self, idx):
+       
         img_loc = os.path.join(self.main_dir, self.total_imgs[idx])
-        img_loc_ch = os.path.join(self.ch_dir, self.ch_imgs[idx])
-        # img_loc_c2 = os.path.join(self.c2_dir, self.c2_imgs[idx])
+        ch1_loc = os.path.join(self.ch_dir, self.ch_1[idx])
+        ch2_loc = os.path.join(self.ch_dir, self.ch_2[idx])
 
         image = Image.open(img_loc).convert("RGB")
-        image_c1 = Image.open(img_loc_c1).convert("RGB")
-        # image_c2 = Image.open(img_loc_c2).convert("RGB")
+        channel_1 = Image.open(ch1_loc).convert("RGB")
+        channel_2 = Image.open(ch2_loc).convert("RGB")
 
-        x = torch.cat((self.transform(image_c1),
-                       self.transform(image_c2)), dim=0)
+        x,y = 0, 0
+        w_ = 1300
+        h_ = 108
+        image = image.crop((x, y, x + w_, y + h_))
+        channel_1 = channel_1.crop((x, y, x + w_, y + h_))
+        channel_2 = channel_2.crop((x, y, x + w_, y + h_))
+
+        x = torch.cat((self.transform(channel_1),
+                       self.transform(channel_2)), dim=0)
 
         y = self.transform(image)
         return x, y
 
 
 # Train Data folders
-target_folder_path = "data/traintest/in_data"
-channel_folder_path = "data/traintest/out_data"
+target_folder_path = "data/traintest/out_data"
+channel_folder_path = "data/traintest/in_data"
 
 # Test Data Folders
 # img_folder_path_test = "small_test"
 # c1_folder_path_test = "small_test_c1"
 # c2_folder_path_test = "small_test_c2"
 
-train_data = CustomDataSet(target_folder_path,
+dataset = CustomDataSet(target_folder_path,
                            channel_folder_path, transform=transforms.ToTensor())
-exit()
-test_data = CustomDataSet(img_folder_path_test, c1_folder_path_test,
-                          c2_folder_path_test, transform=transforms.ToTensor())
-
+train_size = int(len(dataset) * .8)
+test_size = len(dataset) - train_size
+train_data, test_data = torch.utils.data.random_split(dataset, [train_size, test_size]) 
 
 #########################################
 ########### Train Model #################
 #########################################
 
 
-def train(model, num_epochs=5, batch_size=4, learning_rate=1e-3):
+def train(model, num_epochs=5, batch_size=40, learning_rate=1e-3):
     torch.manual_seed(42)
     criterion = nn.MSELoss()  # mean square error loss
 
@@ -183,22 +204,34 @@ def train(model, num_epochs=5, batch_size=4, learning_rate=1e-3):
                                  lr=learning_rate,
                                  weight_decay=1e-5)  # <--
 
-    train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
+    train_loader = DataLoader(train_data.dataset, batch_size=batch_size, shuffle=True)
 
     outputs = []
     for epoch in range(num_epochs):
+        start = time.time()
+
+
+
+
+
         for data in train_loader:
 
             img, targ = data
 
             recon = model.forward(img)
 
+            # print(targ.shape)
+            # print(recon.shape)
+            
+            # exit()
+
             loss = criterion(recon, targ)
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
-
-        print('Epoch:{}, Loss:{:.4f}'.format(epoch + 1, float(loss)))
+        now = time.time()
+        elapsed = (now - start)/60
+        print('Epoch:{}, Loss:{:.4f}, Time: {:.4f}'.format(epoch + 1, float(loss), elapsed))
         # outputs.append((epoch, img, recon),)
         outputs.append((epoch, targ, recon),)
     return outputs
@@ -211,6 +244,7 @@ def color2rad(img, mask=False):
     if mask:
         img = np.where(img < (255 - 1e-10), img, np.nan)
     return img
+
 
 
 model = Autoencoder()
@@ -245,6 +279,7 @@ for k in range(0, max_epochs, 5):
         #utils.write_img(item[0], imgfpath)
 
     plt.show()
+
 #########################################
 ############ Test Model #################
 #########################################
@@ -254,7 +289,7 @@ print('Viewing Test Images')
 def test(model, batch_size=64, learning_rate=1e-3):
     torch.manual_seed(42)
 
-    test_loader = torch.utils.data.DataLoader(test_data,
+    test_loader = torch.utils.data.DataLoader(test_data.dataset,
                                               batch_size=batch_size,
                                               shuffle=True)
     outputs = []
