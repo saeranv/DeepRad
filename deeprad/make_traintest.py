@@ -55,12 +55,12 @@ def crop_orients(img, border_width=2, base_x=1300):
     crop_img = np.concatenate(crop_img, axis=1)
 
     if crop_img.shape[1] > ret_img.shape[1]:
+        if crop_img.shape[1] > MAX_CROP_SIZE:
+            MAX_CROP_SIZE = crop_img.shape[1]
         print('crop_img larger then return img. Expand overall size '
               ' to {} from {}.'.format(crop_img.shape, ret_img.shape))
         diff = int(crop_img.shape[1] - ret_img.shape[1] / 2.0)
         crop_img = crop_img[:, diff + 1:crop_img.shape[1] - diff - 1]
-        if crop_img.shape[1] > MAX_CROP_SIZE:
-            MAX_CROP_SIZE = crop_img.shape[1]
 
     # center add to ret_img
     mid_xdim = int(np.floor(crop_img.shape[1] / 2.0))

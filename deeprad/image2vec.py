@@ -433,47 +433,8 @@ def get_cluster_coord_fx(x_gauss_mod, y_gauss_mod):
     return _get_cluster_coord_fx
 
 
-def _ugly_loop(model_id, scale, doors, _rooms, targ_id_dir):
-
-    # -------------------------------------------------------------
-    # Extract/remove image data
-    # -------------------------------------------------------------
-    # Remove balconies, railings, and walls
-    _rooms = np.where(_rooms == 1, 0, _rooms)
-    _rooms = np.where(_rooms == 8, 0, _rooms)
-    _rooms = np.where(_rooms == 2, 0, _rooms)
-
-    # -------------------------------------------------------------
-    # Get door_vec data for scaling
-    # -------------------------------------------------------------
-    door_lens = []
-    for door in doors:
-        pts, _ = door[0], door[1]
-        pts = np.array(pts) * scale
-        door_vec = pts[1] - pts[0]
-        door_len = np.sum(door_vec ** 2) ** 0.5
-        door_lens.append(door_len)
-
-    door_lens = np.array(door_lens)
-    meter_scale = 0.9 / door_lens.mean()
-    image_scale = 1 / meter_scale
-
-    # Gut check the scale
-    _dim = np.where(np.sum(_rooms, axis=0) > 1, 0, 1)
-    _dim = contiguous_ones_idx(_dim)
-    diff = _dim[:, 1] - _dim[:, 0]
-    diff = np.diff(_dim, n=1, axis=1).ravel()
-    _dim = _rooms.shape[1] - np.sum(diff)
-
-    # -------------------------------------------------------------
-    # Take first order derivative for thresholding.
-    # -------------------------------------------------------------
-    room = _rooms.astype(np.float64)
-    dx = np.abs(np.diff(room, axis=0, prepend=0.0))
-    dy = np.abs(np.diff(room, axis=1, prepend=0.0))
-    diff = dx + dy
-    diff = np.where(diff > 0, 255, 0)
-    threshed_rooms = diff.astype(np.uint8)
+def image_to_poly_sh_arr(threshed_rooms, meter_scale=1, image_scale=1):
+    """Given threholded image returns contours as shapely geoms."""
 
     # -------------------------------------------------------------
     # Get contour w/ opencv.
@@ -579,8 +540,56 @@ def _ugly_loop(model_id, scale, doors, _rooms, targ_id_dir):
     # if np.abs(len(poly_sh_arr_) - orig_len) > 2:
     #     recurse
 
-    poly_sh_arr = poly_sh_arr_
+    #poly_sh_arr = poly_sh_arr_
     # print(poly_sh_arr)
+
+    return poly_sh_arr_
+
+
+def _ugly_loop(model_id, scale, doors, _rooms, targ_id_dir):
+
+    # -------------------------------------------------------------
+    # Extract/remove image data
+    # -------------------------------------------------------------
+    # Remove balconies, railings, and walls
+    _rooms = np.where(_rooms == 1, 0, _rooms)
+    _rooms = np.where(_rooms == 8, 0, _rooms)
+    _rooms = np.where(_rooms == 2, 0, _rooms)
+
+    # -------------------------------------------------------------
+    # Get door_vec data for scaling
+    # -------------------------------------------------------------
+    door_lens = []
+    for door in doors:
+        pts, _ = door[0], door[1]
+        pts = np.array(pts) * scale
+        door_vec = pts[1] - pts[0]
+        door_len = np.sum(door_vec ** 2) ** 0.5
+        door_lens.append(door_len)
+
+    door_lens = np.array(door_lens)
+    meter_scale = 0.9 / door_lens.mean()
+    image_scale = 1 / meter_scale
+
+    # Gut check the scale
+    _dim = np.where(np.sum(_rooms, axis=0) > 1, 0, 1)
+    _dim = contiguous_ones_idx(_dim)
+    diff = _dim[:, 1] - _dim[:, 0]
+    diff = np.diff(_dim, n=1, axis=1).ravel()
+    _dim = _rooms.shape[1] - np.sum(diff)
+
+    # -------------------------------------------------------------
+    # Take first order derivative for thresholding.
+    # -------------------------------------------------------------
+    room = _rooms.astype(np.float64)
+    dx = np.abs(np.diff(room, axis=0, prepend=0.0))
+    dy = np.abs(np.diff(room, axis=1, prepend=0.0))
+    diff = dx + dy
+    diff = np.where(diff > 0, 255, 0)
+    threshed_rooms = diff.astype(np.uint8)
+
+    poly_sh_arr = image_to_poly_sh_arr(
+        threshed_rooms, meter_scale, image_scale)
 
     # -------------------------------------------------------------
     # Dump data.
