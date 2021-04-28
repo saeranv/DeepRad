@@ -11,7 +11,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from shapely import affinity
 import shapely.geometry as geom
-from rtree import index
+try:
+    from rtree import index
+except:
+    rtree = None
+    print('No rtree found.')
+
 from sklearn.mixture import GaussianMixture
 from matplotlib.axes import Axes
 
@@ -336,7 +341,11 @@ def contiguous_ones_idx(bit_arr: np.ndarray) -> np.ndarray:
 
 
 def whitespace_pixel_dist(pixel_arr, viz=False, **kwargs):
-    """Return distance whitespace as array from 1d pixel array."""
+    """Return distance whitespace as array from 1d pixel array.
+
+    Pixel array must be collection of points. This function will then convert
+    to image.
+    """
     pixel_arr = pixel_arr.astype(int)
     zz = np.ones((int(np.round(pixel_arr.max())) + 1)).astype(np.bool)
     zz[pixel_arr] = 0
@@ -345,7 +354,7 @@ def whitespace_pixel_dist(pixel_arr, viz=False, **kwargs):
 
     if viz:
         _, a = plt.subplots()
-        a.imshow(np.array([zz] * 3), **kwargs)
+        a.imshow(np.array([zz] * 3), cmap='gray_r', **kwargs)
 
     # distance of white space. Less then 16 = close
     pix_gap = white_space_idx[:, 1] - white_space_idx[:, 0]
@@ -380,9 +389,9 @@ def xy_projection(poly_sh_arr):
     """Produces two 2d arrays of x, y points, where one axis is 0."""
     # Get model points
     _xproj = np.concatenate([to_poly_np(poly_sh)[0]
-                            for poly_sh in poly_sh_arr])
+                             for poly_sh in poly_sh_arr])
     _yproj = np.concatenate([to_poly_np(poly_sh)[1]
-                            for poly_sh in poly_sh_arr])
+                             for poly_sh in poly_sh_arr])
 
     # Create 2D x, y projection matrices
     n_pts = _xproj.shape[0]

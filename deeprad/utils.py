@@ -74,6 +74,7 @@ def extract_floorplan_ids(data_num, target_data_dir=None, verbose=True):
 
     # Load all model directories
     floorplan_id_arr = os.listdir(target_data_dir)
+    floorpla_id_arr = sorted(floorplan_id_arr)
     n_ids = len(floorplan_id_arr)
 
     if n_ids == 0:
@@ -154,7 +155,7 @@ def to_multi_channel_img_arr(imgs: List[np.ndarray]):
     n_channels = len(imgs)
 
     assert np.all([np.array_equal([len(img.shape)], [2])
-                  for img in imgs]), 'img must be 2d grayscale.'
+                   for img in imgs]), 'img must be 2d grayscale.'
 
     assert np.all([np.array_equal(img.shape, imgs[0].shape) for img in imgs]), \
         'All images must be same shape. Got {}.'.format(
