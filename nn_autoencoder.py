@@ -22,6 +22,8 @@ import time
 RADCMAP = plt.get_cmap('RdYlBu_r')
 
 np.random.seed(2)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print("You are using device: %s" % device)
 
 #############################
 #### Reduce Image Size ######
@@ -73,8 +75,9 @@ def reduce_img(path, train_path, test_path):
 
 
 class Autoencoder(nn.Module):
-    def __init__(self):
+    def __init__(self, device=None):
         super(Autoencoder, self).__init__()
+        self.device = device
         self.encoder = nn.Sequential(  # like the Composition layer you built
             nn.Conv2d(6, 16, 3, stride=2, padding=1),
             nn.ReLU(),
@@ -169,6 +172,14 @@ class CustomDataSet(Dataset):
         channel_1 = channel_1.crop((x, y, x + w_, y + h_))
         channel_2 = channel_2.crop((x, y, x + w_, y + h_))
 
+        ### Resize Img
+        # factor = .52
+        # image = image.resize((math.ceil(w_ * factor), int(h_ * factor)))
+        # channel_1 = channel_1.resize((math.ceil(w_ * factor), int(h_ * factor)))
+        # channel_2 = channel_2.resize((math.ceil(w_ * factor), int(h_ * factor)))
+
+
+
         x = torch.cat((self.transform(channel_1),
                        self.transform(channel_2)), dim=0)
 
@@ -208,30 +219,21 @@ def train(model, num_epochs=5, batch_size=40, learning_rate=1e-3):
 
     outputs = []
     for epoch in range(num_epochs):
-        start = time.time()
-
-
-
-
+        # start = time.time()
 
         for data in train_loader:
 
             img, targ = data
 
             recon = model.forward(img)
-
-            # print(targ.shape)
-            # print(recon.shape)
-            
-            # exit()
-
             loss = criterion(recon, targ)
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
-        now = time.time()
-        elapsed = (now - start)/60
-        print('Epoch:{}, Loss:{:.4f}, Time: {:.4f}'.format(epoch + 1, float(loss), elapsed))
+        # now = time.time()
+        # elapsed = (now - start)/60
+        print('Epoch:{}, Loss:{:.4f}'.format(epoch + 1, float(loss)))
+        # print('Epoch:{}, Loss:{:.4f}, Time: {:.4f}'.format(epoch + 1, float(loss), elapsed))
         # outputs.append((epoch, img, recon),)
         outputs.append((epoch, targ, recon),)
     return outputs
@@ -247,21 +249,24 @@ def color2rad(img, mask=False):
 
 
 
-model = Autoencoder()
-max_epochs = 30
-outputs = train(model, num_epochs=max_epochs)
+model = Autoencoder(device)
+max_epochs = 20
+
+print("Training")
+outputs = train(model, num_epochs=max_epochs, learning_rate= 1e-3)
 
 # print(len(outputs))
+grid=2
 for k in range(0, max_epochs, 5):
     # print(k)
     # print(outputs[k][1])
-    plt.figure(figsize=(9, 2))
+    plt.figure(figsize=(grid, 2))
     imgs = outputs[k][1].detach().numpy()
     recon = outputs[k][2].detach().numpy()
     for i, item in enumerate(imgs):
-        if i >= 9:
+        if i >= grid:
             break
-        plt.subplot(2, 9, i + 1)
+        plt.subplot(2, grid, i + 1)
         img = item[0]
         plt.imshow(color2rad(img), cmap=RADCMAP, vmin=0, vmax=255)
         # imgfpath = os.path.join(os.getcwd(), 'img_{}.jpg'.format(k))
@@ -269,9 +274,9 @@ for k in range(0, max_epochs, 5):
         # print(len(imgs))
 
     for i, item in enumerate(recon):
-        if i >= 9:
+        if i >= grid:
             break
-        plt.subplot(2, 9, 9 + i + 1)
+        plt.subplot(2, grid, grid + i + 1)
         img = item[0]
         img = item[0]
         plt.imshow(color2rad(img), cmap=RADCMAP, vmin=0, vmax=255)
@@ -280,6 +285,13 @@ for k in range(0, max_epochs, 5):
 
     plt.show()
 
+# Save Model
+torch.save(model, 'model.pt')
+
+# Load
+# model = torch.load(PATH)
+# model.eval()
+exit()
 #########################################
 ############ Test Model #################
 #########################################
