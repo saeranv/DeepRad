@@ -18,20 +18,92 @@ import random
 import re
 
 
-RADCMAP = plt.get_cmap('RdYlBu_r')
+class Autoencoder(nn.Module):
+    def __init__(self):
+        super(Autoencoder, self).__init__()
+        self.encoder = nn.Sequential(  # like the Composition layer you built
+            nn.Conv2d(6, 16, 3, stride=2, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(16, 32, 3, stride=2, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(32, 64, 7)
+        )
 
-np.random.seed(2)
+        self.decoder = nn.Sequential(
+            nn.ConvTranspose2d(64, 32, 7),
+            nn.ReLU(),
+            nn.ConvTranspose2d(32, 16, 3, stride=2,
+                               padding=1, output_padding=1),
+            nn.ReLU(),
+            nn.ConvTranspose2d(16, 3, 3, stride=2,
+                               padding=1, output_padding=1),
+            # nn.Sigmoid()
+            # nn.Tanh
+        )
 
-#############################
-#### Reduce Image Size ######
-#############################
+    def forward(self, x):
+        x = self.encoder(x)
+        x = self.decoder(x)
+        return x
 
+class CustomDataSet(Dataset):
+    def __init__(self, main_dir, ch_dir, transform):
+        self.main_dir = main_dir
+        self.ch_dir = ch_dir
 
-img_folder_path = "small_train"
-org_folder_path = "load_test"
-org_folder_pathc1 = "load_test_c1"
-org_folder_pathc2 = "load_test_c2"
+        self.transform = transform
+        all_imgs = os.listdir(main_dir)
+        ch_imgs = os.listdir(ch_dir)
 
+        all_imgs = self.sort_img(all_imgs)
+        ch_imgs = self.sort_img(ch_imgs)
+
+        # only works for 2 input channels
+        half_ch_imgs = int(len(ch_imgs) / 2)
+        ch_imgs = [(ch_imgs[i], ch_imgs[i+1]) for i in range(half_ch_imgs)]
+
+        self.total_imgs = all_imgs
+        self.ch_imgs = ch_imgs
+
+    @staticmethod
+    def img_fpath_idx(ss):
+        """Get model id prefix from imagefpath."""
+        return int(ss.split("_")[0])
+
+    def sort_img(self, img_fpaths):
+        return sorted(img_fpaths, key=lambda ss: self.img_fpath_idx(ss))
+
+    def __len__(self):
+        return len(self.total_imgs)
+
+    def __getitem__(self, idx):
+        img_loc = os.path.join(self.main_dir, self.total_imgs[idx])
+        img_loc_c1 = os.path.join(self.ch_dir, self.ch_imgs[idx][0])
+        img_loc_c2 = os.path.join(self.ch_dir, self.ch_imgs[idx][1])
+
+        image = Image.open(img_loc).convert("RGB")
+        image_c1 = Image.open(img_loc_c1).convert("RGB")
+        image_c2 = Image.open(img_loc_c2).convert("RGB")
+        x = torch.cat((self.transform(image_c1),
+                       self.transform(image_c2)), dim=0)
+        y = self.transform(image)
+
+        return x, y
+
+def test_model(model, batch_size=64, learning_rate=1e-3):
+    torch.manual_seed(42)
+
+    test_loader = torch.utils.data.DataLoader(test_data,
+                                              batch_size=batch_size,
+                                              shuffle=True)
+    outputs = []
+
+    for data in test_loader:
+        img, _ = data
+        recon = model(img)
+
+        outputs.append((img, recon),)
+    return outputs
 
 def reduce_img(path, train_path, test_path):
     image_list = []
@@ -61,121 +133,7 @@ def reduce_img(path, train_path, test_path):
             else:
                 new_img.save(train_path + new_name, optimize=True)
 
-
-# reduce_img(org_folder_path, 'small_train/', 'small_test/')
-# reduce_img(org_folder_pathc1, 'small_train_c1/', 'small_test_c1/')
-# reduce_img(org_folder_pathc2, 'small_train_c2/', 'small_test_c2/')
-# exit()
-
-#############################
-#############################
-
-
-class Autoencoder(nn.Module):
-    def __init__(self):
-        super(Autoencoder, self).__init__()
-        self.encoder = nn.Sequential(  # like the Composition layer you built
-            nn.Conv2d(6, 16, 3, stride=2, padding=1),
-            nn.ReLU(),
-            nn.Conv2d(16, 32, 3, stride=2, padding=1),
-            nn.ReLU(),
-            nn.Conv2d(32, 64, 7)
-        )
-
-        self.decoder = nn.Sequential(
-            nn.ConvTranspose2d(64, 32, 7),
-            nn.ReLU(),
-            nn.ConvTranspose2d(32, 16, 3, stride=2,
-                               padding=1, output_padding=1),
-            nn.ReLU(),
-            nn.ConvTranspose2d(16, 3, 3, stride=2,
-                               padding=1, output_padding=1),
-            # nn.Sigmoid()
-            # nn.Tanh
-        )
-
-    def forward(self, x):
-        x = self.encoder(x)
-        x = self.decoder(x)
-        return x
-
-
-#############################
-###### Load Custom Data #####
-#############################
-
-class CustomDataSet(Dataset):
-    def __init__(self, main_dir, ch_dir, transform):
-        self.main_dir = main_dir
-        self.c1_dir = ch_dir
-        # self.c2_dir = c2_dir
-
-        self.transform = transform
-        all_imgs = os.listdir(main_dir)
-        ch_imgs = os.listdir(ch_dir)
-        # c2_imgs = os.listdir(c2_dir)
-
-        all_imgs = self.sort_img(all_imgs)
-        ch_imgs = self.sort_img(ch_imgs)
-        # c2_imgs = self.sort_img(c2_imgs)
-
-        self.total_imgs = all_imgs
-        self.ch_imgs = ch_imgs
-        # self.c2_imgs = c2_imgs
-
-    def sort_img(self, l):
-        keys = []
-        names = []
-        for j, i in enumerate(l):
-            k = i.split('_')[0]
-            keys.append(int(k))
-            names.append(i)
-
-        _, sorted_list = (list(t) for t in zip(*sorted(zip(keys, names))))
-        # print(sorted_list[:5])
-        return sorted_list
-
-    def __len__(self):
-        return len(self.total_imgs)
-
-    def __getitem__(self, idx):
-        img_loc = os.path.join(self.main_dir, self.total_imgs[idx])
-        img_loc_ch = os.path.join(self.ch_dir, self.ch_imgs[idx])
-        # img_loc_c2 = os.path.join(self.c2_dir, self.c2_imgs[idx])
-
-        image = Image.open(img_loc).convert("RGB")
-        image_c1 = Image.open(img_loc_c1).convert("RGB")
-        # image_c2 = Image.open(img_loc_c2).convert("RGB")
-
-        x = torch.cat((self.transform(image_c1),
-                       self.transform(image_c2)), dim=0)
-
-        y = self.transform(image)
-        return x, y
-
-
-# Train Data folders
-target_folder_path = "data/traintest/in_data"
-channel_folder_path = "data/traintest/out_data"
-
-# Test Data Folders
-# img_folder_path_test = "small_test"
-# c1_folder_path_test = "small_test_c1"
-# c2_folder_path_test = "small_test_c2"
-
-train_data = CustomDataSet(target_folder_path,
-                           channel_folder_path, transform=transforms.ToTensor())
-exit()
-test_data = CustomDataSet(img_folder_path_test, c1_folder_path_test,
-                          c2_folder_path_test, transform=transforms.ToTensor())
-
-
-#########################################
-########### Train Model #################
-#########################################
-
-
-def train(model, num_epochs=5, batch_size=4, learning_rate=1e-3):
+def train_model(model, num_epochs=5, batch_size=4, learning_rate=1e-3):
     torch.manual_seed(42)
     criterion = nn.MSELoss()  # mean square error loss
 
@@ -203,7 +161,6 @@ def train(model, num_epochs=5, batch_size=4, learning_rate=1e-3):
         outputs.append((epoch, targ, recon),)
     return outputs
 
-
 def color2rad(img, mask=False):
     """img is np.ndarray of floats btwn 0 - 1"""
     img = (img * 255).astype(np.uint8)
@@ -213,9 +170,42 @@ def color2rad(img, mask=False):
     return img
 
 
+#-------------------------------------
+# reset train Data folders
+#-------------------------------------
+
+curr_dir = os.path.join(os.getcwd(), '..', 'data')
+target_folder_path = os.path.join(curr_dir, "traintest/out_data")
+channel_folder_path = os.path.join(curr_dir, "traintest/in_data")
+print(os.path.isdir(target_folder_path), os.path.isdir(channel_folder_path))
+
+
+RADCMAP = plt.get_cmap('RdYlBu_r')
+np.random.seed(2)
+
+#############################
+#### Reduce Image Size ######
+#############################
+
+# Test Data Folders
+# img_folder_path_test = "small_test"
+# c1_folder_path_test = "small_test_c1"
+# c2_folder_path_test = "small_test_c2"
+
+train_data = CustomDataSet(target_folder_path,
+                           channel_folder_path, transform=transforms.ToTensor())
+#exit()
+#test_data = CustomDataSet(img_folder_path_test, c1_folder_path_test,
+#                          c2_folder_path_test, transform=transforms.ToTensor())
+
+
+#########################################
+########### Train Model #################
+#########################################
+
 model = Autoencoder()
 max_epochs = 30
-outputs = train(model, num_epochs=max_epochs)
+outputs = train_model(model, num_epochs=max_epochs)
 
 # print(len(outputs))
 for k in range(0, max_epochs, 5):
@@ -251,40 +241,23 @@ for k in range(0, max_epochs, 5):
 print('Viewing Test Images')
 
 
-def test(model, batch_size=64, learning_rate=1e-3):
-    torch.manual_seed(42)
+# outputs_test = test_model(model)
 
-    test_loader = torch.utils.data.DataLoader(test_data,
-                                              batch_size=batch_size,
-                                              shuffle=True)
-    outputs = []
+# for k in range(0, len(outputs_test), 5):
+#     plt.figure(figsize=(9, 2))
+#     imgs = outputs_test[k][0].detach().numpy()
+#     recon = outputs_test[k][1].detach().numpy()
+#     for i, item in enumerate(imgs):
+#         if i >= 9:
+#             break
+#         plt.subplot(2, 9, i + 1)
+#         img = item[0]
+#         plt.imshow(color2rad(img), cmap=RADCMAP, vmin=0, vmax=255)
+#     for i, item in enumerate(recon):
+#         if i >= 9:
+#             break
+#         plt.subplot(2, 9, 9 + i + 1)
+#         img = item[0]
+#         plt.imshow(color2rad(img), cmap=RADCMAP, vmin=0, vmax=255)
 
-    for data in test_loader:
-        img, _ = data
-        recon = model(img)
-
-        outputs.append((img, recon),)
-    return outputs
-
-
-outputs_test = test(model)
-
-for k in range(0, len(outputs_test), 5):
-    plt.figure(figsize=(9, 2))
-    imgs = outputs_test[k][0].detach().numpy()
-    recon = outputs_test[k][1].detach().numpy()
-    for i, item in enumerate(imgs):
-        if i >= 9:
-            break
-        plt.subplot(2, 9, i + 1)
-        img = item[0]
-        plt.imshow(color2rad(img), cmap=RADCMAP, vmin=0, vmax=255)
-    for i, item in enumerate(recon):
-        if i >= 9:
-            break
-        plt.subplot(2, 9, 9 + i + 1)
-        img = item[0]
-        plt.imshow(color2rad(img), cmap=RADCMAP, vmin=0, vmax=255)
-
-    plt.show()
-© 2021 GitHub, Inc.
+#     plt.show()
