@@ -142,21 +142,21 @@ class CustomDataSet(Dataset):
         # print(sorted_list[:5])
 
         return sorted_list
-    
+
     def split_channels(self, l):
         c1, c2 = [], []
         channels = iter(l)
         for x in channels:
             c1.append(x)
             c2.append(next(channels))
-        
+
         return c1, c2
 
     def __len__(self):
         return len(self.total_imgs)
 
     def __getitem__(self, idx):
-       
+
         img_loc = os.path.join(self.main_dir, self.total_imgs[idx])
         ch1_loc = os.path.join(self.ch_dir, self.ch_1[idx])
         ch2_loc = os.path.join(self.ch_dir, self.ch_2[idx])
@@ -200,7 +200,7 @@ dataset = CustomDataSet(target_folder_path,
                            channel_folder_path, transform=transforms.ToTensor())
 train_size = int(len(dataset) * .8)
 test_size = len(dataset) - train_size
-train_data, test_data = torch.utils.data.random_split(dataset, [train_size, test_size]) 
+train_data, test_data = torch.utils.data.random_split(dataset, [train_size, test_size])
 
 #########################################
 ########### Train Model #################

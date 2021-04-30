@@ -17,7 +17,7 @@ DEEPRAD_GHOUT_DIR = os.path.abspath(os.path.join(
     os.getcwd(), '..', 'deeprad/data/ghout/'))
 DEEPRAD_TRAINTEST_DIR = os.path.abspath(os.path.join(
     os.getcwd(), '..', 'deeprad/data/traintest/'))
-
+RADCMAP = plt.get_cmap('RdYlBu_r')
 
 def pp(x, *args):
     pprint(x) if not args else print(x, *args)
@@ -65,7 +65,21 @@ def load_img_rgb(img_fpath: str) -> np.ndarray:
 def write_img(img: np.ndarray, img_fpath: str) -> bool:
     return cv2.imwrite(img_fpath, img)
 
+def color2rad(img, mask=False):
+    """img is np.ndarray of floats btwn 0 - 1"""
+    img = (img * 255).astype(np.uint8)
+    # TODO: add a mask here??
+    if mask:
+        img = np.where(img < (255 - 1e-10), img, np.nan)
+    return img
 
+def load_json(json_fpath):
+    with open(json_fpath, 'r') as fp:
+        val_dict = json.load(fp)
+
+    return val_dict
+
+# TODO: these two functions don't belong in utils
 def extract_floorplan_ids(data_num, target_data_dir=None, verbose=True):
     """Safely extract root model directories for polygon extraction."""
 
@@ -87,13 +101,6 @@ def extract_floorplan_ids(data_num, target_data_dir=None, verbose=True):
         data_num = n_ids
 
     return data_num, floorplan_id_arr
-
-
-def load_json(json_fpath):
-    with open(json_fpath, 'r') as fp:
-        val_dict = json.load(fp)
-
-    return val_dict
 
 
 def load_floorplan_data(targ_id_dirs, data_num):
