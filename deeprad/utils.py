@@ -5,7 +5,13 @@ import json
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
-import cv2
+
+try:
+    import cv2
+except:
+    cv2 = None
+    print("Skip cv2 installation.")
+
 from typing import List
 import shapely.geometry as geom
 from pprint import pprint
@@ -22,6 +28,10 @@ RADCMAP = plt.get_cmap('RdYlBu_r')
 def pp(x, *args):
     pprint(x) if not args else print(x, *args)
 
+def timer(start_time, end_time):
+  hours, rem = np.divmod(end_time-start_time, 3600)
+  minutes, seconds = np.divmod(rem, 60)
+  return "h:{} m:{} s:{}".format(int(hours), int(minutes), int(seconds))
 
 def fd(module, key=None):
     """ To efficiently search modules."""

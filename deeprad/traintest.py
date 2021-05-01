@@ -15,6 +15,8 @@ from torch.utils.data import Dataset, DataLoader
 import matplotlib.pyplot as plt
 import PIL
 
+from .utils import timer
+
 def viz_loss(outputs):
     grid = 2
     num_epochs = len(outputs)
@@ -53,10 +55,9 @@ def training(model, train_data, device, num_epochs=5, batch_size=40, learning_ra
 
     train_loader = DataLoader(train_data.dataset, batch_size=batch_size, shuffle=True)
 
-    outputs = []
+    outputs = [0] * num_epochs
     for epoch in range(num_epochs):
-        # start = time.time()
-
+        start = time.time()
         for inputs, labels in train_loader:
             inputs, labels = inputs.to(device), labels.to(device)
             recon = model.forward(inputs)
@@ -64,20 +65,16 @@ def training(model, train_data, device, num_epochs=5, batch_size=40, learning_ra
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
-        # now = time.time()
-        # elapsed = (now - start)/60
-        print('Epoch:{}, Loss:{:.4f}'.format(epoch + 1, float(loss)))
-        # print('Epoch:{}, Loss:{:.4f}, Time: {:.4f}'.format(epoch + 1, float(loss), elapsed))
-        # outputs.append((epoch, img, recon),)
-        outputs.append((epoch, labels, recon),)
+
+        print('Epoch:{}, Loss:{:.4f}'.format(epoch + 1, loss))
+        outputs[epoch] = (labels, recon)
     return outputs
 
 def testing(model, test_data, device, batch_size=64, learning_rate=1e-3):
     torch.manual_seed(42)
 
-    test_loader = torch.utils.data.DataLoader(test_data.dataset,
-                                              batch_size=batch_size,
-                                              shuffle=True)
+    test_loader = torch.utils.data.DataLoader(
+        test_data.dataset, batch_size=batch_size, shuffle=True)
     outputs = []
 
     for inputs, _ in test_loader:
