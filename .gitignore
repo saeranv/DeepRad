@@ -136,6 +136,9 @@ dmypy.json
 /run
 data/models/
 data/ghout/
+data/traintest/
+data/traintest_small/
+data/hbjsons/
 *.sql
 
 
