@@ -1,4 +1,3 @@
-name: deeprad_v1
 channels:
   - defaults
 dependencies:
@@ -84,4 +83,3 @@ dependencies:
     - torch==1.8.0
     - torchvision==0.9.0
     - typing-extensions==3.7.4.3
-prefix: /home/saeranv/.conda/envs/cs7643-a2

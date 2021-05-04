@@ -140,5 +140,5 @@ data/traintest/
 data/traintest_small/
 data/hbjsons/
 *.sql
-
+*.whl
 
