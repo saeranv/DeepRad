@@ -16,26 +16,34 @@ from PIL import Image
 np.random.seed(2)
 
 class Autoencoder(nn.Module):
-    def __init__(self, device=None):
+    def __init__(self, device, f1=16, k1=3):
         super(Autoencoder, self).__init__()
         self.device = device
+        f2 = f1 * 2
+        f3 = f2 * 2
+        f4 = f3 * 2
+        k2 = k1 * 2
 
         # TODO: add nonlinear layer?
         self.encoder = nn.Sequential(  # like the Composition layer you built
-            nn.Conv2d(6, 16, 3, stride=2, padding=1),
+            nn.Conv2d(6, f1, k1, stride=2, padding=1),
             nn.ReLU(),
-            nn.Conv2d(16, 32, 3, stride=2, padding=1),
+            nn.Conv2d(f1, f2, k1, stride=2, padding=1),
             nn.ReLU(),
-            nn.Conv2d(32, 64, 7)
+            nn.Conv2d(f2, f3, k2),
+            nn.ReLU(),
+            nn.Conv2d(f3, f4, k2)
         )
 
         # TODO: add softmax?
         self.decoder = nn.Sequential(
-            nn.ConvTranspose2d(64, 32, 7),
+            nn.ConvTranspose2d(f4, f3, k2),
             nn.ReLU(),
-            nn.ConvTranspose2d(32, 16, 3, stride=2, padding=1, output_padding=1),
+            nn.ConvTranspose2d(f3, f2, k2),
             nn.ReLU(),
-            nn.ConvTranspose2d(16, 3, 3, stride=2, padding=1, output_padding=1),
+            nn.ConvTranspose2d(f2, f1, k1, stride=2, padding=1, output_padding=1),
+            nn.ReLU(),
+            nn.ConvTranspose2d(f1, 3, k1, stride=2, padding=1, output_padding=1),
             # nn.Sigmoid()
             # nn.Tanh
         )
