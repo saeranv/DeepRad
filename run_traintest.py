@@ -16,21 +16,18 @@ gc.collect()
 torch.cuda.empty_cache()
 
 from ray import tune
-from ray.tune import CLIReporter
-from ray.tune.schedulers import ASHAScheduler
-from ray.tune.suggest.hyperopt import HyperOptSearch
+#from ray.tune import CLIReporter
+#from ray.tune.schedulers import ASHAScheduler
+#from ray.tune.suggest.hyperopt import HyperOptSearch
 
 # sci py stuff
 import numpy as np
 import matplotlib.pyplot as plt
-#from functools import partial
-
 
 # set path
 deeprad_dir = os.path.abspath(os.path.join(os.getcwd()))
 if deeprad_dir not in sys.path:
   sys.path.insert(0, deeprad_dir)
-
 
 # Import deeprad models
 from deeprad.model import Autoencoder, CustomDataSet
@@ -38,12 +35,12 @@ from deeprad import utils
 import deeprad.traintest_utils as traintest_utils
 fd, pp = utils.fd, utils.pp
 
-# Set seeds/device
-np.random.seed(2)  # TODO: confirm right location?
-device = torch.device("cuda:0") if torch.cuda.is_available() else 'cpu'
-print("You are using device: %s" % device)
-
 def main(hparam, checkpoint_dir=None, run_hparam=False, run_train=True, small_train=False):
+
+  # Set seeds/device
+  np.random.seed(2)  # TODO: confirm right location?
+  device = torch.device("cuda:0") if torch.cuda.is_available() else 'cpu'
+  print("You are using device: %s" % device)
 
   print('hparam:', hparam)
 
@@ -55,8 +52,8 @@ def main(hparam, checkpoint_dir=None, run_hparam=False, run_train=True, small_tr
     # ---------------------------------------------------------------------------------
     # Define directories
     # ---------------------------------------------------------------------------------
-    TARGET_FOLDER_PATH = os.path.join(deeprad_dir, "data", "traintest", "out_data")
-    CHANNEL_FOLDER_PATH = os.path.join(deeprad_dir, "data", "traintest", "in_data")
+    TARGET_FOLDER_PATH = os.path.join(deeprad_dir, "data", "traintest2", "out_data")
+    CHANNEL_FOLDER_PATH = os.path.join(deeprad_dir, "data", "traintest2", "in_data")
     if small_train:
       TARGET_FOLDER_PATH = TARGET_FOLDER_PATH.replace('traintest', 'traintest_small')
       CHANNEL_FOLDER_PATH = CHANNEL_FOLDER_PATH.replace('traintest', 'traintest_small')
@@ -65,13 +62,19 @@ def main(hparam, checkpoint_dir=None, run_hparam=False, run_train=True, small_tr
     checkpoint_dir = os.path.join(deeprad_dir, 'models', 'checkpoint')
 
     # Define model directory
-    model_fname = 'model_'
-    model_fname += '_'.join(['{}_{}'.format(n.replace('_', ''), np.round(v, 6))
-      for n, v in hparam.items()])
+    now = time.strftime("%Y%m%d-%H%M%S")
+    nullify = 'delete_me' if small_train else 'model'
+    model_fname = '{}_{}'.format(nullify, now)
+    # model_pars += '_'.join(['{}_{}'.format(n.replace('_', ''), np.round(v, 6))
+    #   for n, v in hparam.items()])
     # model_fname = model_fname.replace('.', '_')  # deal with decimals
     model_dir = os.path.join(deeprad_dir, 'models', model_fname)
     if not os.path.isdir(model_dir):
       utils.make_dir_safely(model_dir)
+
+    with open(os.path.join(model_dir, 'hparams.txt'), 'w') as hparam_file:
+      for k, v in hparam.items():
+        hparam_file.write('{}: {}\n'.format(k, v))
 
     # Define model, loss, image fpaths
     model_fpath, train_loss_fname, train_loss_arr_fpath, train_loss_img_fpath, \
@@ -181,18 +184,29 @@ def main(hparam, checkpoint_dir=None, run_hparam=False, run_train=True, small_tr
 
           # calc loss
           loss = test_criterion(recon_batch, label_batch)
-          test_loss += loss.item() / batch_size
+          test_loss += loss.cpu().item() / batch_size
           test_steps += 1
 
           if i < (test_iters - 1):
             del input_batch; del label_batch; del recon_batch; del loss; del i
 
       print('Test epoch:{}, Loss:{:.4f}'.format(epoch + 1, loss))
+      inter_time = utils.timer(start_time, time.time())
+      print('time: {}.'.format(inter_time))
+
       outputs_test[epoch] = (label_batch, recon_batch)
       test_loss_arr[epoch] = test_loss / test_steps
-      tune.report(test_loss=test_loss)
 
-    print('Time took training/testing {}.'.format(utils.timer(start_time, time.time())))
+      if run_hparam:
+        tune.track.log(test_loss=test_loss_arr[-1])
+        torch.save(model.state_dict(), model_fpath)
+
+    end_time = utils.timer(start_time, time.time())
+    print('Time took training/testing {}.'.format(end_time))
+    with open(os.path.join(model_dir, 'hparams.txt'), 'a') as hparam_file:
+      hparam_file.write('last test_loss: {}\n'.format(test_loss_arr[-1]))
+      hparam_file.write('test_loss: {}\n'.format(test_loss_arr))
+      hparam_file.write('training time: {}\n'.format(end_time))
 
     # ---------------------------
     # Save data
@@ -220,44 +234,61 @@ def main(hparam, checkpoint_dir=None, run_hparam=False, run_train=True, small_tr
 
 
 if __name__ == "__main__":
-  small_train = False
-  run_train, run_hparam = True, True
-  max_epochs, batch_size = 15, 5
-  iter_dirs = False
+  arg_dict = {
+    'max_epochs': 25,
+    'run_train': True,
+    'small_train': False,
+    'batch_size': 5,
+    'run_hparam': False,
+    'iter_dirs': False
+    }
 
   if len(sys.argv) > 1:
     argv = sys.argv[1:]
+
+    for arg in argv:
+      if '--' not in arg: continue
+      assert arg.split('--')[-1] in arg_dict, \
+        '{} not an arg: {}'.format(arg, arg_dict.keys())
+
     if '--max_epochs' in argv:
       i = argv.index('--max_epochs')
-      max_epochs = int(argv[i + 1])
+      arg_dict['max_epochs'] = int(argv[i + 1])
 
     if '--run_train' in argv:
       i = argv.index('--run_train')
-      run_train = bool(int(argv[i + 1]))
+      arg_dict['run_train'] = bool(int(argv[i + 1]))
 
     if '--small_train' in argv:
       i = argv.index('--small_train')
-      small_train = bool(int(argv[i + 1]))
+      arg_dict['small_train'] = bool(int(argv[i + 1]))
 
     if '--batch_size' in argv:
       i = argv.index('--batch_size')
-      batch_size = int(argv[i + 1])
+      arg_dict['batch_size'] = int(argv[i + 1])
 
     if '--run_hparam' in argv:
       i = argv.index('--run_hparam')
-      run_hparam = bool(int(argv[i + 1]))
+      arg_dict['run_hparam'] = bool(int(argv[i + 1]))
 
     if '--iter_dirs' in argv:
       i = argv.index('--iter_dirs')
-      iter_dirs = bool(int(argv[i + 1]))
+      arg_dict['iter_dirs'] = bool(int(argv[i + 1]))
 
-  print('User params (e#, b#, ts, rtrn, rtst, hpr): '
-    '{}, {}, {}, {}, {}, {}'.format(
-      max_epochs, batch_size, small_train, run_train, run_hparam, iter_dirs))
+  print('\nPress Enter to confirm user arg:')
+  [print('{}: {}'.format(k, v)) for k, v in arg_dict.items()]
+  input('...')
 
   # ---------------------------------------------------------------------------------
   # Hyperparameters
   # ---------------------------------------------------------------------------------
+
+  max_epochs = arg_dict['max_epochs']
+  run_train = arg_dict['run_train']
+  small_train = arg_dict['small_train']
+  batch_size = arg_dict['batch_size']
+  run_hparam = arg_dict['run_hparam']
+  iter_dirs = arg_dict['iter_dirs']
 
   if iter_dirs:
     model_dirs = os.listdir(os.path.join(deeprad_dir, 'models'))
@@ -272,8 +303,13 @@ if __name__ == "__main__":
     }
 
     if not run_hparam:
-      hparam['learning_rate'] = 1e-3
-      hparam['weight_decay'] = 1e-4
+      # "learning_rate\": 0.000203228544324115,\n
+      # \"weight_decay\": 1.2697111322756407e-05\
+      hparam['learning_rate'] = 0.000203228544324115 #0.00184
+      hparam['weight_decay'] = 1.2697111322756407e-05 #0.00020957
+
+      hparam['f1'] = 24
+      hparam['k1'] = 3
       main(hparam, None, run_hparam=run_hparam, run_train=run_train, small_train=small_train)
 
     else:
@@ -284,23 +320,28 @@ if __name__ == "__main__":
       # learning_rate = 0.00184
       # weight_decay = 0.00020957
 
-      hparam['f1'] = tune.choice([24, 32, 64])
-      hparam['k1'] = tune.choice([3, 4, 6])
-      hparam['learning_rate'] =  0.00184 # tune.loguniform(1e-4, 1e-1)
-      hparam['weight_decay'] =  0.00020957 # tune.loguniform(1e-5, 1e-1)
+      hparam['f1'] = tune.uniform([24, 128])
+      hparam['k1'] = 3 #tune.grid_search([3, 4, 6])
+      hparam['learning_rate'] = 0.000203228544324115 # tune.uniform(1e-5, 1e-2)
+      hparam['weight_decay'] = 1.2697111322756407e-05 # tune.uniform(1e-5, 1e-1)
 
       gpus_per_trial = 1
-      cpu_num = 8
-      num_samples = 2  # number of times to sample from parameter space
+      cpu_num = 2
+      num_samples = 4  # number of times to sample from parameter space
 
       result = tune.run(
         main,
+        stop={"training_iteration": 5},
         config=hparam,
         num_samples=num_samples,
         resources_per_trial={"cpu": cpu_num, "gpu": gpus_per_trial}
         )
 
+      # tensorboard --logdir ~/ray_results
       print(result.dataframe())
+
+      result.dataframe().to_csv(os.path.join(deeprad_dir, 'models', 'df', 'result_df.csv'))
+
       # best_trial = result.get_best_trial("loss", "min", "last")
       # print("Best trial config: {}".format(best_trial.config))
       # print("Best trial final validation loss: {}".format(

@@ -27,25 +27,25 @@ class Autoencoder(nn.Module):
         # TODO: add nonlinear layer?
         self.encoder = nn.Sequential(  # like the Composition layer you built
             nn.Conv2d(6, f1, k1, stride=2, padding=1),
-            nn.ReLU(),
+            nn.LeakyReLU(),
             nn.Conv2d(f1, f2, k1, stride=2, padding=1),
-            nn.ReLU(),
+            nn.LeakyReLU(),
             nn.Conv2d(f2, f3, k2),
-            nn.ReLU(),
+            nn.LeakyReLU(),
             nn.Conv2d(f3, f4, k2)
         )
 
         # TODO: add softmax?
         self.decoder = nn.Sequential(
             nn.ConvTranspose2d(f4, f3, k2),
-            nn.ReLU(),
+            nn.LeakyReLU(),
             nn.ConvTranspose2d(f3, f2, k2),
-            nn.ReLU(),
+            nn.LeakyReLU(),
             nn.ConvTranspose2d(f2, f1, k1, stride=2, padding=1, output_padding=1),
-            nn.ReLU(),
+            nn.LeakyReLU(),
             nn.ConvTranspose2d(f1, 3, k1, stride=2, padding=1, output_padding=1),
-            # nn.Sigmoid()
-            # nn.Tanh
+            nn.Sigmoid()
+            #nn.LeakyReLU()#,nn.Tanh
         )
 
     def forward(self, x):
@@ -96,7 +96,7 @@ class CustomDataSet(Dataset):
 
     def __getitem__(self, idx):
         """Load image from directory given index."""
-        crop_x, crop_y = 0, 0
+        crop_x, crop_y = 0, 9
         crop_w, crop_h = 1300, 108
 
         img_loc = os.path.join(self.main_dir, self.total_imgs[idx])
@@ -108,12 +108,29 @@ class CustomDataSet(Dataset):
         channel_1 = Image.open(ch1_loc).convert("RGB")
         channel_2 = Image.open(ch2_loc).convert("RGB")
 
-        # Ccrop inputs
+        # Crop inputs
         image = image.crop((crop_x, crop_y, crop_x + crop_w, crop_y + crop_h))
         channel_1 = channel_1.crop((crop_x, crop_y, crop_x + crop_w, crop_y + crop_h))
         channel_2 = channel_2.crop((crop_x, crop_y, crop_x + crop_w, crop_y + crop_h))
 
+        # crop
+        # image = np.array(image)[crop_x: crop_w, crop_y : crop_h]
+        # channel_1 = np.array(channel_1)[crop_x: crop_w, crop_y: crop_h]
+        # channel_2 = np.array(channel_2)[crop_x: crop_w, crop_y: crop_h]
+
         x_in = torch.cat((self.transform(channel_1), self.transform(channel_2)), dim=0)
         y_lbl = self.transform(image)
+
+        #x_in = x_in.int()
+        #y_lbl = y_lbl.int()
+
+        del image; del channel_1; del channel_2; del img_loc; del ch1_loc; del ch2_loc
+
+        # import matplotlib.pyplot as plt
+        # y_lbl = y_lbl.permute(1, 2, 0)
+        # print(y_lbl.size())
+        # plt.imshow(y_lbl)
+        # plt.show()
+        # assert False
 
         return x_in, y_lbl

@@ -53,11 +53,12 @@ def viz_loss(outputs, img_fpath, img_title='Radiation Map', xdim=10, show_plot=F
         label = label_batch[0].permute(1, 2, 0).detach().cpu().numpy()
         recon = recon_batch[0].permute(1, 2, 0).detach().cpu().numpy()
 
-        label = clean_img4rad(label) / 255.0 * 1000.0
-        recon = clean_img4rad(recon) / 255.0 * 1000.0
+        #recon = np.clip(recon, 0.0, 255.0).astype(int)
+        #label = clean_img4rad(label) / 255.0 * 1000.0
+        #recon = clean_img4rad(recon) / 255.0 * 1000.0
 
-        im = a[i, 0].imshow(label, cmap=RADCMAP, vmin=0, vmax=1000)
-        im = a[i, 1].imshow(recon, cmap=RADCMAP, vmin=0, vmax=1000)
+        im = a[i, 0].imshow(label)#, cmap=RADCMAP, vmin=0, vmax=1000)
+        im = a[i, 1].imshow(recon)#, cmap=RADCMAP, vmin=0, vmax=1000)
         clean_plot4rad(a[i], i)
 
     # left, bottom, width, height
