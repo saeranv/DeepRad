@@ -320,7 +320,7 @@ if __name__ == "__main__":
       # learning_rate = 0.00184
       # weight_decay = 0.00020957
 
-      hparam['f1'] = tune.uniform([24, 128])
+      hparam['f1'] = tune.grid_search([24, 48, 64, 128])
       hparam['k1'] = 3 #tune.grid_search([3, 4, 6])
       hparam['learning_rate'] = 0.000203228544324115 # tune.uniform(1e-5, 1e-2)
       hparam['weight_decay'] = 1.2697111322756407e-05 # tune.uniform(1e-5, 1e-1)
