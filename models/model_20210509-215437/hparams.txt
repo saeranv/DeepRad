@@ -1,0 +1,10 @@
+max_epochs: 2
+batch_size: 2
+learning_rate: 0.002
+weight_decay: 1.2697111322756407e-05
+f1: 36
+k1: 3
+last test_loss: [0.]
+test_loss: [[0.0121318]
+ [0.       ]]
+training time: h:1 m:34 s:53

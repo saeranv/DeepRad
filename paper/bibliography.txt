@@ -1,0 +1,76 @@
+@misc{Goodfellow-et-al-2016,
+ author = {Goodfellow, Ian and Bengio, Yoshua and Courville, Aaron},
+ title = {Deep Learning},
+ note = {Book in preparation for MIT Press},
+ publisher = {MIT Press},
+ year = 2016
+}
+
+@article{Kingma_2019,
+   title={An Introduction to Variational Autoencoders},
+   volume={12},
+   ISSN={1935-8245},
+   url={http://dx.doi.org/10.1561/2200000056},
+   DOI={10.1561/2200000056},
+   number={4},
+   journal={Foundations and Trends® in Machine Learning},
+   publisher={Now Publishers},
+   author={Kingma, Diederik P. and Welling, Max},
+   year={2019},
+   pages={307–392}
+}
+
+@incollection{NEURIPS2019_9015,
+title = {PyTorch: An Imperative Style, High-Performance Deep Learning Library},
+author = {Paszke, Adam and Gross, Sam and Massa, Francisco and Lerer, Adam and Bradbury, James and Chanan, Gregory and Killeen, Trevor and Lin, Zeming and Gimelshein, Natalia and Antiga, Luca and Desmaison, Alban and Kopf, Andreas and Yang, Edward and DeVito, Zachary and Raison, Martin and Tejani, Alykhan and Chilamkurthy, Sasank and Steiner, Benoit and Fang, Lu and Bai, Junjie and Chintala, Soumith},
+booktitle = {Advances in Neural Information Processing Systems 32},
+pages = {8024--8035},
+year = {2019},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.neurips.cc/paper/9015-pytorch-an-imperative-style-high-performance-deep-learning-library.pdf}
+}
+
+@misc{Weng_2018,
+  author = {Lilian Weng},
+  title = {From Autoencoder to Beta-VAE},
+  howpublished = {\url{https://lilianweng.github.io/lil-log/2018/08/12/from-autoencoder-to-beta-vae.html}},
+  note = {Accessed: 2021-04-30}
+}
+
+@misc{Kalervo, 
+    author = {Kalervo et al.},
+    title = {CubiCasa5K: A Dataset and an Improved Multi-Task Model for Floorplan Image Analysis},
+    howpublished = {\url{https://arxiv.org/abs/1904.01920v1}},
+    note = {Accessed: 2021-03-20}
+}
+    
+@misc{Ladybug, 
+    author = {Roudsari et al.},
+    title = {Ladybug Tools},
+    howpublished = {\url{https://github.com/saeranv/pincam}},
+    note = {Accessed: 2021-03-20}
+}
+    
+@article{liaw2018tune,
+    title={Tune: A Research Platform for Distributed Model Selection and Training},
+    author={Liaw, Richard and Liang, Eric and Nishihara, Robert
+            and Moritz, Philipp and Gonzalez, Joseph E and Stoica, Ion},
+    journal={arXiv preprint arXiv:1807.05118},
+    year={2018}
+}
+    
+@misc{Vasanthakumar, 
+    author = {Vasanthakumar, Saeran},
+    title = {Pincam},
+    howpublished = {\url{ladybug.tools}},
+    note = {Accessed: 2021-03-20}
+}
+
+
+@misc{Zhang,
+  author = {Lisa Zhang},
+  title = {APS360 Artificial Intelligence Fundamentals},
+  howpublished = {\url{https://www.cs.toronto.edu/~lczhang/360/}},
+  note = {Accessed: 2021-04-30}
+}
+

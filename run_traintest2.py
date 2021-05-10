@@ -106,12 +106,12 @@ def main(hparam, checkpoint_dir=None, run_hparam=False, small_train=False):
   # Construct init model
   torch.manual_seed(42)
 
-  #model = Autoencoder(device, hparam['f1'], hparam['k1'])
+  # model = Autoencoder(device, hparam['f1'], hparam['k1'])
+
   pretrained_model_fpath = os.path.join(
-    deeprad_dir, 'models', 'model_20210506-050120', 'model_20210506-050120.pt')
+    deeprad_dir, 'models', 'model_best_cnn2', 'model_best_cnn2.pt')
+  print(pretrained_model_fpath)
   assert os.path.isfile(pretrained_model_fpath)
-
-
   model = torch.load(pretrained_model_fpath)
   model.eval()
 
@@ -121,8 +121,10 @@ def main(hparam, checkpoint_dir=None, run_hparam=False, small_train=False):
 
   # Freeze encoder
   # model.encoder.requires_grad = False
-  # optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()),
-  #   lr=hparam['learning_rate'], weight_decay=hparam['weight_decay'])
+
+  # optimizer
+  optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()),
+    lr=hparam['learning_rate'], weight_decay=hparam['weight_decay'])
 
   #---------------------------------------------------------------------------------
   # Epoch iteration
