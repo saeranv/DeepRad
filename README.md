@@ -1,4 +1,14 @@
+### Source Task
+![x](/paper/figures/in_out.PNG "x")
 
+### Target Task
+![x](/paper/figures/in_out2.PNG "x")
+
+### Learning Curves
+![x](/paper/figures/target_learning_curves.PNG "x")
+
+
+### QUICKSTART
 To train the deeprad models first install the conda environment. Open a terminal in this directory and type this:
 
 ```
@@ -15,4 +25,4 @@ To train the target autoencoder run:
 python run_traintest2.py --run_hparam 0
 ```
 
- 
+

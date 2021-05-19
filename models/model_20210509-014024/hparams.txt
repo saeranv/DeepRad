@@ -1,6 +1,0 @@
-max_epochs: 20
-batch_size: 3
-learning_rate: 0.002
-weight_decay: 1.2697111322756407e-05
-f1: 36
-k1: 3

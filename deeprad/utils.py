@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
+import time
 
 try:
     import cv2
@@ -182,3 +183,6 @@ def to_multi_channel_img_arr(imgs: List[np.ndarray]):
     assert cat_img.shape[2] == n_channels
 
     return cat_img
+
+def time_str():
+    return time.strftime("%Y%m%d-%H%M%S")

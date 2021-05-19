@@ -134,12 +134,8 @@ dmypy.json
 
 # Honeybee/Ladybug data
 /run
-data/models/
-data/ghout/
-data/traintest/
-data/traintest_small/
-data/hbjsons/
 data/
+models/
 *.sql
 *.whl
 
